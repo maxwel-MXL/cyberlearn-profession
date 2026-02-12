@@ -2,13 +2,14 @@ console.log("JS is working");
 
 console.log("Script Loaded");
 
-window.addEventListener("DOMContentLoaded", function () {
-    loadUser();
-    loadQuiz();
-});
-function loadQuiz() 
+function login() {
+    let username = document.getElementById("username").value;
 
-    if (!document.getElementById("question")) return;
-    showQuestion();
+    if (username.trim() === "") {
+        alert("Enter username");
+        return;
+    }
+
+    localStorage.setItem("user", username);
+    window.location.href = "dashboard.html";
 }
-
