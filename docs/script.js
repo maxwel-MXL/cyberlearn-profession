@@ -26,6 +26,18 @@ function loadUser() {
     if (welcome) {
         welcome.innerText = "Welcome, " + user;
     }
+    function loadCertificate() {
+    let user = localStorage.getItem("user");
+    let score = localStorage.getItem("totalScore");
+
+    if (score >= 20) {
+        document.getElementById("certUser").innerText = user;
+    } else {
+        window.location.href = "dashboard.html";
+    }
+}
+
+    
 }
 
 // LOGOUT
