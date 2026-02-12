@@ -162,6 +162,26 @@ function checkQuiz() {
     }
 }
 </script>
+<script>
+function submitQuiz() {
+    let score = 0;
+
+    if (document.querySelector('input[name="q1"]:checked')?.value === "Confidentiality") {
+        score++;
+    }
+
+    if (document.querySelector('input[name="q2"]:checked')?.value === "Phishing") {
+        score++;
+    }
+
+    if (document.querySelector('input[name="q3"]:checked')?.value === "Integrity") {
+        score++;
+    }
+
+    document.getElementById("result").innerText = 
+        "You scored " + score + " out of 3!";
+}
+</script>
 </body>
 </html>
 
