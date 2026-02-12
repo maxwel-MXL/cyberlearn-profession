@@ -141,3 +141,12 @@ button:hover {
     border-radius: 6px;
     border: none;
 }
+.certificate {
+    background: white;
+    color: black;
+    padding: 60px;
+    border-radius: 12px;
+    text-align: center;
+    width: 600px;
+}
+
