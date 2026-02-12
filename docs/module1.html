@@ -96,11 +96,72 @@
     <br><br>
 
     <a href="dashboard.html">
-        <button>Back to Dashboard</button>
+        <button>Back to Dashboard</button><hr>
+
+<h2>6. Module 1 Quiz</h2>
+
+<div class="quiz">
+
+    <p><strong>1. What does the "C" in CIA Triad stand for?</strong></p>
+    <input type="radio" name="q1" value="a"> Control<br>
+    <input type="radio" name="q1" value="b"> Confidentiality<br>
+    <input type="radio" name="q1" value="c"> Cyber<br>
+
+    <br>
+
+    <p><strong>2. Which attack tricks users using fake emails?</strong></p>
+    <input type="radio" name="q2" value="a"> Phishing<br>
+    <input type="radio" name="q2" value="b"> Firewall<br>
+    <input type="radio" name="q2" value="c"> Encryption<br>
+
+    <br>
+
+    <p><strong>3. Which part of CIA ensures data is not altered?</strong></p>
+    <input type="radio" name="q3" value="a"> Integrity<br>
+    <input type="radio" name="q3" value="b"> Availability<br>
+    <input type="radio" name="q3" value="c"> Confidentiality<br>
+
+    <br><br>
+
+    <button onclick="checkQuiz()">Submit Quiz</button>
+
+    <p id="result"></p>
+
+</div>
+
     </a>
 
 </section>
 
+<script>
+function checkQuiz() {
+    let score = 0;
+
+    let q1 = document.querySelector('input[name="q1"]:checked');
+    let q2 = document.querySelector('input[name="q2"]:checked');
+    let q3 = document.querySelector('input[name="q3"]:checked');
+
+    if (q1 && q1.value === "b") score++;
+    if (q2 && q2.value === "a") score++;
+    if (q3 && q3.value === "a") score++;
+
+    let result = document.getElementById("result");
+
+    if (!q1 || !q2 || !q3) {
+        result.innerHTML = "Please answer all questions.";
+        result.style.color = "orange";
+        return;
+    }
+
+    result.innerHTML = "You scored " + score + " out of 3.";
+    
+    if (score === 3) {
+        result.style.color = "green";
+    } else {
+        result.style.color = "red";
+    }
+}
+</script>
 </body>
 </html>
 
