@@ -46,3 +46,25 @@ button {
 button:hover {
     background-color: #2ea043;
 }
+.content {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.content h2 {
+    color: #58a6ff;
+}
+
+.content h3 {
+    color: #2ea043;
+}
+
+hr {
+    border: 1px solid #30363d;
+    margin: 40px 0;
+}
+
+ul {
+    line-height: 1.8;
+}
