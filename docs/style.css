@@ -149,4 +149,16 @@ button:hover {
     text-align: center;
     width: 600px;
 }
+button {
+    box-shadow: 0 0 10px rgba(34,211,238,0.4);
+}
+
+button:hover {
+    box-shadow: 0 0 20px rgba(34,211,238,0.7);
+    transform: scale(1.05);
+}
+
+.sidebar {
+    background: linear-gradient(180deg, #020617, #0f172a);
+}
 
