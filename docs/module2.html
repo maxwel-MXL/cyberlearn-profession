@@ -17,9 +17,12 @@
         Understanding networking is essential before moving into advanced cybersecurity topics.
     </p>
 
-    <hr>
+  </div>
+  <hr>
 
-    <h2>📘 2.1 Network Fundamentals</h2>
+    <button class="collapsible">📘 2.1 Network Fundamentals</button>
+<div class="section-content">
+
 
     <p>
         A computer network is a group of interconnected devices that communicate
@@ -47,7 +50,8 @@
         <li>Actual data</li>
     </ul>
 
-    <hr>
+   </div>
+ <hr>
 
     <h2>📘 2.2 IP Addressing & Subnetting</h2>
 
@@ -79,7 +83,8 @@ CIDR: 192.168.1.0/24
         and enhances security segmentation.
     </p>
 
-    <hr>
+   </div>
+ <hr>
 
     <h2>📘 2.3 Transport Layer (TCP & UDP)</h2>
 
@@ -115,7 +120,8 @@ CIDR: 192.168.1.0/24
         <li>25 - SMTP</li>
     </ul>
 
-    <hr>
+   </div>
+ <hr>
 
     <h2>📘 2.4 Routing & Switching</h2>
 
@@ -142,7 +148,8 @@ Example:
         outside their local network.
     </p>
 
-    <hr>
+    </div>
+<hr>
 
     <h2>📘 2.5 Network Security Basics</h2>
 
@@ -166,7 +173,8 @@ Example:
         <li>Packet Sniffing</li>
     </ul>
 
-    <hr>
+   </div>
+ <hr>
 
     <h2>📘 2.6 Troubleshooting & Commands</h2>
 
@@ -204,7 +212,8 @@ netstat -ano
         <li>Inspect firewall rules</li>
     </ol>
 
-    <hr>
+   </div>
+ <hr>
 
     <h2>✅ Module 2 Summary</h2>
     <p>
@@ -222,5 +231,172 @@ netstat -ano
 
 </div>
 
+<script>
+var coll = document.getElementsByClassName("collapsible");
+for (var i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
+    });
+}
+</script>
+<script>
+
+// Load Progress
+window.onload = function() {
+    let progress = localStorage.getItem("module2Progress") || 0;
+    updateProgress(progress);
+
+    if (progress == 100) {
+        unlockModule3();
+    }
+};
+
+function completeSection() {
+    localStorage.setItem("module2Progress", 100);
+    updateProgress(100);
+    unlockModule3();
+}
+
+function updateProgress(value) {
+    document.getElementById("progressFill").style.width = value + "%";
+    document.getElementById("progressText").innerText = value + "% Complete";
+}
+
+function unlockModule3() {
+    let link = document.getElementById("module3Link");
+    link.innerText = "📘 Module 3";
+    link.href = "module3.html";
+}
+
+function checkAnswer(button, correct) {
+    if (correct) {
+        document.getElementById("quizResult").innerText = "✅ Correct!";
+    } else {
+        document.getElementById("quizResult").innerText = "❌ Wrong answer.";
+    }
+}
+
+</script>
 </body>
+
+<div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>CyberLearn</h2>
+        <a href="dashboard.html">🏠 Dashboard</a>
+        <a href="module1.html">📘 Module 1</a>
+        <a href="module2.html" class="active-link">📘 Module 2</a>
+        <a href="module3.html" id="module3Link">🔒 Module 3</a>
+
+        <div class="progress-box">
+            <h4>Progress</h4>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p id="progressText">0% Complete</p>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+
+        <h1>Module 2: Network Fundamentals</h1>
+
+        <button onclick="completeSection()">Mark Module Complete</button>
+
+        <hr>
+
+        <h2>🧠 Quick Quiz</h2>
+
+        <div class="quiz-box">
+            <p>1. What protocol is used to transfer web pages?</p>
+            <button onclick="checkAnswer(this, true)">HTTP</button>
+            <button onclick="checkAnswer(this, false)">FTP</button>
+            <button onclick="checkAnswer(this, false)">SMTP</button>
+        </div>
+
+        <p id="quizResult"></p>
+
+    </main>
+
+</div>
+
+</nav>
+
 </html>
+/* ===== NAVBAR ===== */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    background: #0f172a;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #1e293b;
+    z-index: 1000;
+}
+
+.logo {
+    color: #22d3ee;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.nav-links a {
+    color: #cbd5e1;
+    margin-left: 20px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #22d3ee;
+}
+
+/* ===== COLLAPSIBLE ===== */
+
+.collapsible {
+    background: #1e293b;
+    color: #22d3ee;
+    cursor: pointer;
+    padding: 15px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    border-radius: 8px;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.collapsible:hover {
+    background: #334155;
+}
+
+.section-content {
+    padding: 0 15px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+/* ===== FADE IN EFFECT ===== */
+
+.module-container {
+    animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
