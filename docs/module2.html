@@ -314,13 +314,17 @@ function checkAnswer(button, correct) {
         <hr>
 
         <h2>🧠 Quick Quiz</h2>
+<h2>Module 2 Quiz</h2>
 
-        <div class="quiz-box">
-            <p>1. What protocol is used to transfer web pages?</p>
-            <button onclick="checkAnswer(this, true)">HTTP</button>
-            <button onclick="checkAnswer(this, false)">FTP</button>
-            <button onclick="checkAnswer(this, false)">SMTP</button>
-        </div>
+<div class="quiz-box">
+    <p id="question"></p>
+    <div id="answers"></div>
+</div>
+
+<p id="quizResult"></p>
+<button onclick="nextQuestion()">Next Question</button>
+
+        
 
         <p id="quizResult"></p>
 
