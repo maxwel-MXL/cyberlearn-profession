@@ -82,8 +82,19 @@ ul {
     color: white;
     cursor: pointer;
     border-radius: 6px;
+}h2 {
+    border-bottom: 2px solid #58a6ff;
+    padding-bottom: 5px;
+    margin-top: 30px;
 }
+
 
 .quiz button:hover {
     background-color: #238636;
 }
+h2 {
+    border-bottom: 2px solid #58a6ff;
+    padding-bottom: 5px;
+    margin-top: 30px;
+}
+
