@@ -119,3 +119,25 @@ button:hover {
     from {opacity: 0; transform: translateY(20px);}
     to {opacity: 1; transform: translateY(0);}
 }
+.center-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-box {
+    background: #1e293b;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(34,211,238,0.3);
+    text-align: center;
+}
+
+.login-box input {
+    padding: 10px;
+    width: 200px;
+    margin: 15px 0;
+    border-radius: 6px;
+    border: none;
+}
