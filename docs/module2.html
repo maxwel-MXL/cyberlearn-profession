@@ -1,139 +1,226 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Module 2 - Networking Basics</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="topbar">
-    <h1>Module 2: Networking Basics</h1>
-</header>
+<div class="module-container">
 
-<section class="content">
+    <h1>🌐 Module 2: Networking Basics</h1>
 
-<h2>1. What is a Computer Network?</h2>
-<p>
-A computer network is a collection of interconnected devices that communicate 
-and share resources such as files, printers, and internet access.
+    <p>
+        Networking is the foundation of modern communication systems. Every website, email,
+        cloud platform, and cybersecurity tool depends on networking principles.
+        Understanding networking is essential before moving into advanced cybersecurity topics.
+    </p>
 
-Networks allow organizations to share information efficiently and securely.
-</p>
+    <hr>
 
-<hr>
+    <h2>📘 2.1 Network Fundamentals</h2>
 
-<h2>2. Types of Networks</h2>
-<ul>
-<li><strong>LAN (Local Area Network)</strong> – Covers a small geographic area like a school or office.</li>
-<li><strong>WAN (Wide Area Network)</strong> – Covers large areas; the Internet is the largest WAN.</li>
-<li><strong>MAN (Metropolitan Area Network)</strong> – Covers a city or large campus.</li>
-</ul>
+    <p>
+        A computer network is a group of interconnected devices that communicate
+        and share resources such as files, printers, and internet access.
+    </p>
 
-<hr>
+    <h3>Types of Networks</h3>
+    <ul>
+        <li><strong>LAN:</strong> Local Area Network (office, school)</li>
+        <li><strong>WAN:</strong> Wide Area Network (the Internet)</li>
+        <li><strong>MAN:</strong> Metropolitan Area Network (city-wide)</li>
+        <li><strong>PAN:</strong> Personal Area Network (Bluetooth)</li>
+    </ul>
 
-<h2>3. IP Address Explained</h2>
-<p>
-An IP address is a unique identifier assigned to a device on a network.
-It allows devices to locate and communicate with each other.
+    <h3>How Data Travels</h3>
+    <p>
+        When you send data, it is broken into small units called packets.
+        Each packet contains:
+    </p>
 
-Example: 192.168.1.1
-</p>
+    <ul>
+        <li>Source IP address</li>
+        <li>Destination IP address</li>
+        <li>Protocol information</li>
+        <li>Actual data</li>
+    </ul>
 
-<hr>
+    <hr>
 
-<h2>4. OSI Model (Foundation for Certifications)</h2>
-<p>
-The OSI model describes how data moves across a network in 7 layers:
-</p>
+    <h2>📘 2.2 IP Addressing & Subnetting</h2>
 
-<ol>
-<li>Physical</li>
-<li>Data Link</li>
-<li>Network</li>
-<li>Transport</li>
-<li>Session</li>
-<li>Presentation</li>
-<li>Application</li>
-</ol>
+    <p>
+        An IP address uniquely identifies a device on a network.
+    </p>
 
-<p>
-Security professionals must understand these layers to identify 
-where vulnerabilities may exist.
-</p>
+    <pre>
+Example:
+192.168.1.10
+    </pre>
 
-<hr>
+    <h3>Private IP Ranges</h3>
+    <ul>
+        <li>10.0.0.0 – 10.255.255.255</li>
+        <li>172.16.0.0 – 172.31.255.255</li>
+        <li>192.168.0.0 – 192.168.255.255</li>
+    </ul>
 
-<h2>5. Mini Practical Scenario</h2>
-<p>
-If a user cannot access a website, a cybersecurity analyst may check:
-</p>
+    <h3>Subnet Mask Example</h3>
+    <pre>
+IP: 192.168.1.10
+Mask: 255.255.255.0
+CIDR: 192.168.1.0/24
+    </pre>
 
-<ul>
-<li>Is the IP address reachable?</li>
-<li>Is DNS resolving properly?</li>
-<li>Is the firewall blocking traffic?</li>
-</ul>
+    <p>
+        Subnetting improves performance, reduces broadcast traffic,
+        and enhances security segmentation.
+    </p>
 
-<hr>
+    <hr>
 
-<h2>6. Module 2 Quiz</h2>
+    <h2>📘 2.3 Transport Layer (TCP & UDP)</h2>
 
-<div class="quiz">
+    <h3>TCP - Transmission Control Protocol</h3>
+    <ul>
+        <li>Reliable</li>
+        <li>Connection-oriented</li>
+        <li>Uses acknowledgments</li>
+        <li>Ensures data integrity</li>
+    </ul>
 
-<p><strong>1. What does LAN stand for?</strong></p>
-<input type="radio" name="q1" value="Local Area Network"> Local Area Network<br>
-<input type="radio" name="q1" value="Large Access Node"> Large Access Node<br>
-<input type="radio" name="q1" value="Linked Application Network"> Linked Application Network<br>
+    <p><strong>TCP 3-Way Handshake:</strong></p>
+    <pre>
+1. SYN
+2. SYN-ACK
+3. ACK
+    </pre>
 
-<br>
+    <h3>UDP - User Datagram Protocol</h3>
+    <ul>
+        <li>Faster</li>
+        <li>No connection setup</li>
+        <li>No delivery guarantee</li>
+        <li>Used for streaming and gaming</li>
+    </ul>
 
-<p><strong>2. Which OSI layer handles routing?</strong></p>
-<input type="radio" name="q2" value="Network"> Network<br>
-<input type="radio" name="q2" value="Physical"> Physical<br>
-<input type="radio" name="q2" value="Application"> Application<br>
+    <h3>Common Ports</h3>
+    <ul>
+        <li>80 - HTTP</li>
+        <li>443 - HTTPS</li>
+        <li>22 - SSH</li>
+        <li>53 - DNS</li>
+        <li>25 - SMTP</li>
+    </ul>
 
-<br>
+    <hr>
 
-<p><strong>3. What identifies a device on a network?</strong></p>
-<input type="radio" name="q3" value="IP Address"> IP Address<br>
-<input type="radio" name="q3" value="Password"> Password<br>
-<input type="radio" name="q3" value="Username"> Username<br>
+    <h2>📘 2.4 Routing & Switching</h2>
 
-<br><br>
+    <h3>Router</h3>
+    <p>
+        A router connects different networks and forwards packets
+        based on IP addresses using a routing table.
+    </p>
 
-<button onclick="submitQuiz()">Submit Quiz</button>
-<p id="result"></p>
+    <h3>Switch</h3>
+    <p>
+        A switch connects devices within the same network
+        using MAC addresses.
+    </p>
+
+    <h3>Default Gateway</h3>
+    <pre>
+Example:
+192.168.1.1
+    </pre>
+
+    <p>
+        The default gateway allows devices to communicate
+        outside their local network.
+    </p>
+
+    <hr>
+
+    <h2>📘 2.5 Network Security Basics</h2>
+
+    <h3>Firewall</h3>
+    <p>
+        A firewall filters incoming and outgoing traffic
+        based on predefined security rules.
+    </p>
+
+    <h3>NAT (Network Address Translation)</h3>
+    <p>
+        NAT converts private IP addresses into public IP addresses,
+        helping conserve public IP space and improve security.
+    </p>
+
+    <h3>Common Network Threats</h3>
+    <ul>
+        <li>ARP Spoofing</li>
+        <li>DNS Poisoning</li>
+        <li>Man-in-the-Middle Attacks</li>
+        <li>Packet Sniffing</li>
+    </ul>
+
+    <hr>
+
+    <h2>📘 2.6 Troubleshooting & Commands</h2>
+
+    <h3>Check IP Address</h3>
+    <pre>
+Windows: ipconfig
+Linux: ip addr
+    </pre>
+
+    <h3>Test Connectivity</h3>
+    <pre>
+ping google.com
+    </pre>
+
+    <h3>Trace Route</h3>
+    <pre>
+tracert google.com
+    </pre>
+
+    <h3>Check Open Ports</h3>
+    <pre>
+netstat -ano
+    </pre>
+
+    <p>
+        Structured troubleshooting steps:
+    </p>
+
+    <ol>
+        <li>Check physical connection</li>
+        <li>Verify IP configuration</li>
+        <li>Ping default gateway</li>
+        <li>Ping external host</li>
+        <li>Check DNS resolution</li>
+        <li>Inspect firewall rules</li>
+    </ol>
+
+    <hr>
+
+    <h2>✅ Module 2 Summary</h2>
+    <p>
+        In this module, you learned how networks function,
+        how IP addressing works, the differences between TCP and UDP,
+        routing and switching basics, network security concepts,
+        and troubleshooting techniques.
+    </p>
+
+    <br><br>
+
+    <a href="dashboard.html">
+        <button>⬅ Back to Dashboard</button>
+    </a>
 
 </div>
-
-<br><br>
-
-<a href="dashboard.html">
-    <button>Back to Dashboard</button>
-</a>
-
-</section>
-
-<script>
-function submitQuiz() {
-    let score = 0;
-
-    if (document.querySelector('input[name="q1"]:checked')?.value === "Local Area Network") {
-        score++;
-    }
-
-    if (document.querySelector('input[name="q2"]:checked')?.value === "Network") {
-        score++;
-    }
-
-    if (document.querySelector('input[name="q3"]:checked')?.value === "IP Address") {
-        score++;
-    }
-
-    document.getElementById("result").innerText =
-        "You scored " + score + " out of 3!";
-}
-</script>
 
 </body>
 </html>
