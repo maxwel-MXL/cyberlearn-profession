@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Module 2 - Networking Basics</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+    <h1>Module 2: Networking Basics</h1>
+</header>
+
+<section class="content">
+
+<h2>1. What is a Computer Network?</h2>
+<p>
+A computer network is a collection of interconnected devices that communicate 
+and share resources such as files, printers, and internet access.
+
+Networks allow organizations to share information efficiently and securely.
+</p>
+
+<hr>
+
+<h2>2. Types of Networks</h2>
+<ul>
+<li><strong>LAN (Local Area Network)</strong> – Covers a small geographic area like a school or office.</li>
+<li><strong>WAN (Wide Area Network)</strong> – Covers large areas; the Internet is the largest WAN.</li>
+<li><strong>MAN (Metropolitan Area Network)</strong> – Covers a city or large campus.</li>
+</ul>
+
+<hr>
+
+<h2>3. IP Address Explained</h2>
+<p>
+An IP address is a unique identifier assigned to a device on a network.
+It allows devices to locate and communicate with each other.
+
+Example: 192.168.1.1
+</p>
+
+<hr>
+
+<h2>4. OSI Model (Foundation for Certifications)</h2>
+<p>
+The OSI model describes how data moves across a network in 7 layers:
+</p>
+
+<ol>
+<li>Physical</li>
+<li>Data Link</li>
+<li>Network</li>
+<li>Transport</li>
+<li>Session</li>
+<li>Presentation</li>
+<li>Application</li>
+</ol>
+
+<p>
+Security professionals must understand these layers to identify 
+where vulnerabilities may exist.
+</p>
+
+<hr>
+
+<h2>5. Mini Practical Scenario</h2>
+<p>
+If a user cannot access a website, a cybersecurity analyst may check:
+</p>
+
+<ul>
+<li>Is the IP address reachable?</li>
+<li>Is DNS resolving properly?</li>
+<li>Is the firewall blocking traffic?</li>
+</ul>
+
+<hr>
+
+<h2>6. Module 2 Quiz</h2>
+
+<div class="quiz">
+
+<p><strong>1. What does LAN stand for?</strong></p>
+<input type="radio" name="q1" value="Local Area Network"> Local Area Network<br>
+<input type="radio" name="q1" value="Large Access Node"> Large Access Node<br>
+<input type="radio" name="q1" value="Linked Application Network"> Linked Application Network<br>
+
+<br>
+
+<p><strong>2. Which OSI layer handles routing?</strong></p>
+<input type="radio" name="q2" value="Network"> Network<br>
+<input type="radio" name="q2" value="Physical"> Physical<br>
+<input type="radio" name="q2" value="Application"> Application<br>
+
+<br>
+
+<p><strong>3. What identifies a device on a network?</strong></p>
+<input type="radio" name="q3" value="IP Address"> IP Address<br>
+<input type="radio" name="q3" value="Password"> Password<br>
+<input type="radio" name="q3" value="Username"> Username<br>
+
+<br><br>
+
+<button onclick="submitQuiz()">Submit Quiz</button>
+<p id="result"></p>
+
+</div>
+
+<br><br>
+
+<a href="dashboard.html">
+    <button>Back to Dashboard</button>
+</a>
+
+</section>
+
+<script>
+function submitQuiz() {
+    let score = 0;
+
+    if (document.querySelector('input[name="q1"]:checked')?.value === "Local Area Network") {
+        score++;
+    }
+
+    if (document.querySelector('input[name="q2"]:checked')?.value === "Network") {
+        score++;
+    }
+
+    if (document.querySelector('input[name="q3"]:checked')?.value === "IP Address") {
+        score++;
+    }
+
+    document.getElementById("result").innerText =
+        "You scored " + score + " out of 3!";
+}
+</script>
+
+</body>
+</html>
