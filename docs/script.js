@@ -13,3 +13,7 @@ function login() {
     localStorage.setItem("user", username);
     window.location.href = "dashboard.html";
 }
+window.addEventListener("DOMContentLoaded", function () {
+    loadUser();
+    loadQuiz();
+});
