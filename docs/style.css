@@ -169,4 +169,36 @@ button:hover {
   text-decoration: none;
   border-radius: 5px;
 }
+.quiz-section {
+  margin-top: 40px;
+}
+
+.quiz-box {
+  background: #111;
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+}
+
+.question {
+  margin-bottom: 20px;
+}
+
+.quiz-box button {
+  padding: 10px 20px;
+  background: blue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.quiz-box button:hover {
+  background: darkblue;
+}
+
+#result {
+  margin-top: 15px;
+  font-weight: bold;
+}
 
