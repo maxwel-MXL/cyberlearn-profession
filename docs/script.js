@@ -17,3 +17,7 @@ window.addEventListener("DOMContentLoaded", function () {
     loadUser();
     loadQuiz();
 });
+function loadQuiz() {
+    if (!document.getElementById("question")) return;
+    showQuestion();
+}
