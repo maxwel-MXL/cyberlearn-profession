@@ -1,4 +1,5 @@
 console.log("Script is connected");
+console.log("Login clicked");
 
 // ===== LOGIN =====
 function login() {
