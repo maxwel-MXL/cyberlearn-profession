@@ -88,6 +88,7 @@ module5Btn.innerText = "Module 5 Locked";
 document.getElementById("module4Btn").onclick = function(){
 window.location.href="module4.html";
 };
+window.location.href="certificate.html";
 
 </script>
 
