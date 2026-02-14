@@ -1,4 +1,5 @@
 console.log("Script is connected");
+
 // ===== LOGIN =====
 function login() {
   let username = document.getElementById("username");
