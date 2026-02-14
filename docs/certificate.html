@@ -116,6 +116,19 @@ document.getElementById("name").innerText = student;
 function downloadPDF(){
 window.print();
 }
+<h1>CyberLearn Professional Certificate</h1>
+
+<div id="certStatus"></div>
+
+<script>
+if(localStorage.getItem("certificate") === "unlocked"){
+    document.getElementById("certStatus").innerHTML =
+    "<h2>Congratulations! 🎉</h2><p>You completed all modules.</p>";
+}else{
+    document.getElementById("certStatus").innerHTML =
+    "<h2>Locked 🔒</h2><p>Complete all modules to unlock.</p>";
+}
+</script>
 
 </script>
 
