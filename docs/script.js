@@ -74,5 +74,21 @@ function nextQuestion() {
 }
 
 window.addEventListener("DOMContentLoaded", loadQuiz);
+<script>
+
+const module4Passed = localStorage.getItem("module4Passed");
+
+const module5Btn = document.getElementById("module5Btn");
+
+if(!module4Passed){
+module5Btn.disabled = true;
+module5Btn.innerText = "Module 5 Locked";
+}
+
+document.getElementById("module4Btn").onclick = function(){
+window.location.href="module4.html";
+};
+
+</script>
 
 
