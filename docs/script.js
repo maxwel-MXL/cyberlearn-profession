@@ -77,6 +77,8 @@ function nextQuestion() {
 
 window.addEventListener("DOMContentLoaded", loadQuiz);
 <script>
+  <button onclick="openModule4()">
+
 
 const module4Passed = localStorage.getItem("module4Passed");
 
