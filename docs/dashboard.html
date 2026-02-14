@@ -54,6 +54,38 @@ function openModule3(){
 function openModule4(){
     window.location.href = "module4.html";
 }
+<div class="main">
+
+<h1>Welcome, <span id="user"></span></h1>
+
+<div class="card">
+    <h2>Your Progress</h2>
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+</div>
+
+<div class="card">
+    <h2>Modules</h2>
+    <button onclick="window.location.href='module1.html'">Module 1</button>
+    <button onclick="window.location.href='module2.html'">Module 2</button>
+    <button onclick="window.location.href='module3.html'">Module 3</button>
+    <button onclick="window.location.href='module4.html'">Module 4</button>
+</div>
+
+<div class="card">
+    <h2>Certification</h2>
+    <button onclick="window.location.href='certificate.html'">View Certificate</button>
+</div>
+
+<button onclick="logout()">Logout</button>
+
+</div>
+
+<script>
+document.getElementById("user").innerText = localStorage.getItem("loggedInUser");
+updateProgress();
+</script>
 
 </script>
 
