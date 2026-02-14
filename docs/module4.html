@@ -303,3 +303,255 @@ function submitQuiz(){
 
 </body>
 </html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Professional LMS - Module 4</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f6f9;
+            margin:40px;
+        }
+
+        h1,h2{
+            color:#1e2a38;
+        }
+
+        .box{
+            background:white;
+            padding:25px;
+            margin-bottom:30px;
+            border-radius:10px;
+            box-shadow:0 0 15px rgba(0,0,0,0.08);
+        }
+
+        button{
+            padding:10px 20px;
+            background:#0d6efd;
+            color:white;
+            border:none;
+            border-radius:6px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#084298;
+        }
+
+        #timer{
+            font-weight:bold;
+            color:red;
+        }
+
+        #certificate{
+            display:none;
+            background:#e9ffe9;
+            padding:20px;
+            border:2px solid green;
+            margin-top:20px;
+        }
+
+        .locked{
+            color:red;
+            font-weight:bold;
+        }
+
+        .unlocked{
+            color:green;
+            font-weight:bold;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<h1>Professional Learning Management System</h1>
+
+<div class="box">
+    <h2>🔐 Session Verification</h2>
+    <p id="sessionStatus"></p>
+</div>
+
+<div class="box">
+    <h2>📊 Module Progress</h2>
+    <p id="progress"></p>
+</div>
+
+<div class="box">
+    <h2>📝 Module 4 Timed Assessment</h2>
+    <p>Time Remaining: <span id="timer">60</span> seconds</p>
+    <div id="quiz"></div>
+    <button onclick="submitQuiz()">Submit Assessment</button>
+    <p id="result"></p>
+</div>
+
+<div id="certificate" class="box">
+    <h2>🎓 Certificate of Completion</h2>
+    <p>This certifies that</p>
+    <h3 id="studentName"></h3>
+    <p>has successfully completed Module 4 Professional Developer Training.</p>
+    <p>Performance Level: PROFESSIONAL</p>
+</div>
+
+<script>
+
+/* ===============================
+   SESSION CHECK
+=================================*/
+
+const loggedInUser = localStorage.getItem("loggedInUser");
+
+if(!loggedInUser){
+    document.getElementById("sessionStatus").innerHTML =
+    "❌ No active session. Please login first.";
+} else {
+    document.getElementById("sessionStatus").innerHTML =
+    "✅ Logged in as: " + loggedInUser;
+}
+
+/* ===============================
+   MODULE PROGRESS SYSTEM
+=================================*/
+
+const module4Passed = localStorage.getItem("module4Passed");
+
+if(module4Passed){
+    document.getElementById("progress").innerHTML =
+    "<span class='unlocked'>Module 4 Completed</span>";
+} else{
+    document.getElementById("progress").innerHTML =
+    "<span class='locked'>Module 4 Not Completed</span>";
+}
+
+/* ===============================
+   QUIZ ENGINE
+=================================*/
+
+const questions = [
+{
+question:"What improves scalability?",
+options:["Repeated code","Modular structure","Deleting logic","Inline styling"],
+correct:1
+},
+{
+question:"What stores browser data?",
+options:["localStorage","CSS","HTML","Photoshop"],
+correct:0
+},
+{
+question:"Pass mark commonly used?",
+options:["10%","20%","70%","5%"],
+correct:2
+},
+{
+question:"Professional systems separate:",
+options:["Logic & Design","Font & Color","Image & Text","Button & Border"],
+correct:0
+},
+{
+question:"Role-based systems control:",
+options:["Permissions","Colors","Fonts","Spacing"],
+correct:0
+},
+{
+question:"Security improves with:",
+options:["Plain passwords","Backend validation","No login","Console logs"],
+correct:1
+},
+{
+question:"Timer improves:",
+options:["Random errors","Exam fairness","Font size","Page layout"],
+correct:1
+}
+];
+
+const quizContainer = document.getElementById("quiz");
+
+function renderQuiz(){
+    questions.forEach((q,index)=>{
+        const div=document.createElement("div");
+        div.innerHTML=`<p><strong>${index+1}. ${q.question}</strong></p>`;
+        q.options.forEach((opt,i)=>{
+            div.innerHTML+=`
+            <label>
+            <input type="radio" name="q${index}" value="${i}">
+            ${opt}
+            </label><br>`;
+        });
+        quizContainer.appendChild(div);
+    });
+}
+
+renderQuiz();
+
+/* ===============================
+   TIMER SYSTEM
+=================================*/
+
+let timeLeft = 60;
+const timerElement = document.getElementById("timer");
+
+const countdown = setInterval(()=>{
+    timeLeft--;
+    timerElement.textContent = timeLeft;
+
+    if(timeLeft <= 0){
+        clearInterval(countdown);
+        submitQuiz();
+    }
+},1000);
+
+/* ===============================
+   SUBMIT LOGIC
+=================================*/
+
+function submitQuiz(){
+
+    clearInterval(countdown);
+
+    let score = 0;
+
+    questions.forEach((q,index)=>{
+        const selected=document.querySelector(`input[name="q${index}"]:checked`);
+        if(selected && parseInt(selected.value)===q.correct){
+            score++;
+        }
+    });
+
+    const percentage = (score/questions.length)*100;
+
+    localStorage.setItem("module4Score",percentage);
+
+    if(percentage>=70){
+        localStorage.setItem("module4Passed",true);
+
+        document.getElementById("result").innerHTML =
+        `✅ PASSED with ${percentage}%`;
+
+        generateCertificate();
+
+    } else{
+        document.getElementById("result").innerHTML =
+        `❌ FAILED with ${percentage}%. Retake Required.`;
+    }
+
+}
+
+/* ===============================
+   CERTIFICATE SYSTEM
+=================================*/
+
+function generateCertificate(){
+
+    document.getElementById("studentName").innerText = loggedInUser;
+
+    document.getElementById("certificate").style.display = "block";
+}
+
+</script>
+
+</body>
+</html>
