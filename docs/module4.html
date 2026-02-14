@@ -1,557 +1,200 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Module 4 - Professional Web Systems Development</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f9;
-            margin: 40px;
-            line-height: 1.7;
-        }
-
-        h1, h2, h3 {
-            color: #1e2a38;
-        }
-
-        .content-box {
-            background: white;
-            padding: 30px;
-            margin-bottom: 40px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.08);
-        }
-
-        button {
-            padding: 12px 20px;
-            background-color: #0d6efd;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            margin-top: 15px;
-        }
-
-        button:hover {
-            background-color: #084298;
-        }
-
-        #result {
-            font-weight: bold;
-            margin-top: 20px;
-            font-size: 18px;
-        }
-
-        .section-title {
-            border-left: 5px solid #0d6efd;
-            padding-left: 10px;
-        }
-
-        pre {
-            background: #f1f1f1;
-            padding: 15px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-    </style>
-</head>
-
-<body>
-
-<h1>Module 4: Intermediate → Advanced → Professional Developer System</h1>
-
-<!-- INTRODUCTION -->
-<div class="content-box">
-    <h2 class="section-title">📘 Introduction</h2>
-
-    <p>
-        Module 4 represents the transition from beginner-level web development
-        to structured professional system development.
-    </p>
-
-    <p>
-        In this module, you will learn how to build applications that behave
-        like real-world systems such as:
-    </p>
-
-    <ul>
-        <li>Learning Management Systems (LMS)</li>
-        <li>Online Examination Platforms</li>
-        <li>Banking Dashboards</li>
-        <li>Enterprise Applications</li>
-    </ul>
-
-    <p>
-        We will explore architecture, structure, modular programming,
-        data persistence, and system-level thinking.
-    </p>
-</div>
-
-<!-- INTERMEDIATE SECTION -->
-<div class="content-box">
-    <h2 class="section-title">🔹 Intermediate Level Development</h2>
-
-    <h3>1️⃣ Structured Quiz Engine</h3>
-
-    <p>
-        Instead of writing questions directly in HTML,
-        we use JavaScript arrays of objects.
-    </p>
-
-<pre>
-const question = {
-    question: "What is modular programming?",
-    options: ["Unorganized code", "Reusable structured code"],
-    correct: 1
-};
-</pre>
-
-    <p>
-        This allows scalability and easier management of large systems.
-    </p>
-
-    <h3>2️⃣ Pass Mark Enforcement</h3>
-
-    <p>
-        A professional learning system enforces a minimum pass mark.
-        Common pass mark: 70%.
-    </p>
-
-    <h3>3️⃣ Progress Tracking</h3>
-
-    <p>
-        Progress tracking ensures a user cannot skip modules.
-        We store completion status using localStorage.
-    </p>
-
-<pre>
-localStorage.setItem("module4Completed", true);
-</pre>
-
-</div>
-
-<!-- ADVANCED SECTION -->
-<div class="content-box">
-    <h2 class="section-title">🔹 Advanced Development Architecture</h2>
-
-    <h3>1️⃣ Modular JavaScript</h3>
-
-    <p>
-        Instead of writing everything in one function,
-        professional systems separate responsibilities.
-    </p>
-
-    <ul>
-        <li>renderQuiz()</li>
-        <li>calculateScore()</li>
-        <li>storeResults()</li>
-        <li>unlockNextModule()</li>
-    </ul>
-
-    <h3>2️⃣ Error Handling</h3>
-
-<pre>
-if(!selectedAnswer){
-    alert("Please select an answer before submitting.");
-    return;
-}
-</pre>
-
-    <p>
-        This prevents logical system errors.
-    </p>
-
-    <h3>3️⃣ Clean Code Principles</h3>
-
-    <ul>
-        <li>Readable variable names</li>
-        <li>No repeated logic</li>
-        <li>Organized sections</li>
-        <li>Clear flow of execution</li>
-    </ul>
-
-</div>
-
-<!-- PROFESSIONAL SECTION -->
-<div class="content-box">
-    <h2 class="section-title">🔹 Professional Developer System</h2>
-
-    <h3>1️⃣ Role-Based Access</h3>
-
-    <p>
-        Systems can define roles such as:
-    </p>
-
-    <ul>
-        <li>Admin</li>
-        <li>Instructor</li>
-        <li>Student</li>
-    </ul>
-
-    <h3>2️⃣ Module Unlock Logic</h3>
-
-<pre>
-if(score >= 70){
-    localStorage.setItem("module5Unlocked", true);
-}
-</pre>
-
-    <h3>3️⃣ Certificate Preparation Logic</h3>
-
-    <p>
-        A certificate should only be generated
-        when all modules are completed.
-    </p>
-
-    <h3>4️⃣ System Security Awareness</h3>
-
-    <ul>
-        <li>Never store passwords in plain text</li>
-        <li>Use backend validation in real systems</li>
-        <li>Use HTTPS encryption</li>
-    </ul>
-
-</div>
-
-<!-- QUIZ SECTION -->
-<div class="content-box">
-    <h2 class="section-title">📝 Module 4 Comprehensive Assessment</h2>
-
-    <div id="quiz"></div>
-    <button onclick="submitQuiz()">Submit Assessment</button>
-    <div id="result"></div>
-</div>
-
-<script>
-
-const questions = [
-{
-question: "Why is modular programming important?",
-options: ["It reduces readability", "It improves scalability", "It deletes data", "It slows performance"],
-correct: 1
-},
-{
-question: "What does localStorage allow?",
-options: ["Server storage", "Browser-based data persistence", "Database deletion", "HTML styling"],
-correct: 1
-},
-{
-question: "What is a common pass mark in LMS systems?",
-options: ["20%", "40%", "70%", "10%"],
-correct: 2
-},
-{
-question: "Professional systems separate:",
-options: ["Logic and Design", "Colors and Images", "Fonts and Buttons", "HTML and CSS"],
-correct: 0
-},
-{
-question: "Role-based systems define:",
-options: ["Page colors", "User permissions", "Font size", "Animations"],
-correct: 1
-},
-{
-question: "Which improves security?",
-options: ["Plain text password", "Backend validation", "No validation", "Disabling login"],
-correct: 1
-}
-];
-
-const quizContainer = document.getElementById("quiz");
-
-function renderQuiz(){
-    questions.forEach((q,index)=>{
-        const div=document.createElement("div");
-        div.innerHTML=`<p><strong>${index+1}. ${q.question}</strong></p>`;
-        q.options.forEach((opt,i)=>{
-            div.innerHTML+=`
-            <label>
-            <input type="radio" name="q${index}" value="${i}">
-            ${opt}
-            </label><br>`;
-        });
-        quizContainer.appendChild(div);
-    });
-}
-
-renderQuiz();
-
-function submitQuiz(){
-    let score=0;
-
-    questions.forEach((q,index)=>{
-        const selected=document.querySelector(`input[name="q${index}"]:checked`);
-        if(selected && parseInt(selected.value)===q.correct){
-            score++;
-        }
-    });
-
-    const percentage=(score/questions.length)*100;
-
-    if(percentage>=70){
-        localStorage.setItem("module4Passed", true);
-        document.getElementById("result").innerHTML=
-        `You scored ${percentage}%. ✅ PROFESSIONAL LEVEL PASSED.`;
-    } else{
-        document.getElementById("result").innerHTML=
-        `You scored ${percentage}%. ❌ Retake Required.`;
-    }
-}
-
-</script>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Professional LMS - Module 4</title>
-
+    <title>Module 4 - Advanced Cybersecurity</title>
     <style>
         body{
-            font-family: Arial, sans-serif;
-            background:#f4f6f9;
-            margin:40px;
+            margin:0;
+            font-family:Segoe UI, sans-serif;
+            background:#0b1220;
+            color:white;
+            padding:40px;
+            line-height:1.7;
         }
 
         h1,h2{
-            color:#1e2a38;
+            color:#4da6ff;
         }
 
-        .box{
-            background:white;
+        .section{
+            margin-bottom:50px;
             padding:25px;
-            margin-bottom:30px;
-            border-radius:10px;
-            box-shadow:0 0 15px rgba(0,0,0,0.08);
+            background:#111827;
+            border-radius:12px;
+        }
+
+        .note{
+            background:#1f2937;
+            padding:15px;
+            border-left:5px solid #4da6ff;
+            margin-top:15px;
+        }
+
+        .quiz{
+            margin-top:20px;
         }
 
         button{
             padding:10px 20px;
-            background:#0d6efd;
-            color:white;
+            background:#2563eb;
             border:none;
-            border-radius:6px;
+            color:white;
+            border-radius:8px;
             cursor:pointer;
         }
 
         button:hover{
-            background:#084298;
+            background:#1d4ed8;
         }
-
-        #timer{
-            font-weight:bold;
-            color:red;
-        }
-
-        #certificate{
-            display:none;
-            background:#e9ffe9;
-            padding:20px;
-            border:2px solid green;
-            margin-top:20px;
-        }
-
-        .locked{
-            color:red;
-            font-weight:bold;
-        }
-
-        .unlocked{
-            color:green;
-            font-weight:bold;
-        }
-
     </style>
 </head>
 
 <body>
 
-<h1>Professional Learning Management System</h1>
+<h1>Module 4: Advanced Cybersecurity & Professional Practice</h1>
 
-<div class="box">
-    <h2>🔐 Session Verification</h2>
-    <p id="sessionStatus"></p>
+<div class="section">
+<h2>1. Security Architecture Design</h2>
+
+<p>
+Security architecture is the structured design of systems to prevent, detect,
+and respond to cyber threats.
+</p>
+
+<p>
+A professional security architecture includes:
+</p>
+
+<ul>
+<li>Layered Defense (Defense in Depth)</li>
+<li>Zero Trust Model</li>
+<li>Network Segmentation</li>
+<li>Access Control Policies</li>
+</ul>
+
+<div class="note">
+<strong>Professional Note:</strong>
+A secure system is not built by adding security later.
+Security must be integrated during system design.
 </div>
 
-<div class="box">
-    <h2>📊 Module Progress</h2>
-    <p id="progress"></p>
 </div>
 
-<div class="box">
-    <h2>📝 Module 4 Timed Assessment</h2>
-    <p>Time Remaining: <span id="timer">60</span> seconds</p>
-    <div id="quiz"></div>
-    <button onclick="submitQuiz()">Submit Assessment</button>
-    <p id="result"></p>
+<div class="section">
+<h2>2. Threat Modeling</h2>
+
+<p>
+Threat modeling identifies potential attackers, assets, vulnerabilities,
+and possible attack paths.
+</p>
+
+<p>
+Popular frameworks:
+</p>
+
+<ul>
+<li>STRIDE</li>
+<li>DREAD</li>
+<li>MITRE ATT&CK</li>
+</ul>
+
+<div class="note">
+Professional developers always perform threat modeling
+before deploying applications.
 </div>
 
-<div id="certificate" class="box">
-    <h2>🎓 Certificate of Completion</h2>
-    <p>This certifies that</p>
-    <h3 id="studentName"></h3>
-    <p>has successfully completed Module 4 Professional Developer Training.</p>
-    <p>Performance Level: PROFESSIONAL</p>
 </div>
 
-<script>
+<div class="section">
+<h2>3. Incident Response Planning</h2>
 
-/* ===============================
-   SESSION CHECK
-=================================*/
+<p>
+Incident response is a structured approach to handling security breaches.
+</p>
 
-const loggedInUser = localStorage.getItem("loggedInUser");
+<p>
+Phases:
+</p>
 
-if(!loggedInUser){
-    document.getElementById("sessionStatus").innerHTML =
-    "❌ No active session. Please login first.";
-} else {
-    document.getElementById("sessionStatus").innerHTML =
-    "✅ Logged in as: " + loggedInUser;
+<ol>
+<li>Preparation</li>
+<li>Identification</li>
+<li>Containment</li>
+<li>Eradication</li>
+<li>Recovery</li>
+<li>Lessons Learned</li>
+</ol>
+
+<div class="note">
+Without an incident response plan,
+organizations lose money, reputation, and trust.
+</div>
+
+</div>
+
+<div class="section">
+<h2>4. Secure Coding Practices</h2>
+
+<p>
+Developers must avoid common vulnerabilities:
+</p>
+
+<ul>
+<li>SQL Injection</li>
+<li>Cross-Site Scripting (XSS)</li>
+<li>Insecure Authentication</li>
+<li>Improper Input Validation</li>
+</ul>
+
+<p>Example of secure input validation in JavaScript:</p>
+
+<pre style="background:#1f2937; padding:15px; border-radius:8px;">
+const username = input.value.trim();
+if(username.length < 3){
+    alert("Username too short");
 }
+</pre>
 
-/* ===============================
-   MODULE PROGRESS SYSTEM
-=================================*/
+</div>
 
-const module4Passed = localStorage.getItem("module4Passed");
+<div class="section">
+<h2>5. Professional Security Mindset</h2>
 
-if(module4Passed){
-    document.getElementById("progress").innerHTML =
-    "<span class='unlocked'>Module 4 Completed</span>";
-} else{
-    document.getElementById("progress").innerHTML =
-    "<span class='locked'>Module 4 Not Completed</span>";
-}
+<p>
+Professional cybersecurity experts:
+</p>
 
-/* ===============================
-   QUIZ ENGINE
-=================================*/
+<ul>
+<li>Think like attackers</li>
+<li>Continuously update knowledge</li>
+<li>Follow compliance standards</li>
+<li>Document everything</li>
+</ul>
 
-const questions = [
-{
-question:"What improves scalability?",
-options:["Repeated code","Modular structure","Deleting logic","Inline styling"],
-correct:1
-},
-{
-question:"What stores browser data?",
-options:["localStorage","CSS","HTML","Photoshop"],
-correct:0
-},
-{
-question:"Pass mark commonly used?",
-options:["10%","20%","70%","5%"],
-correct:2
-},
-{
-question:"Professional systems separate:",
-options:["Logic & Design","Font & Color","Image & Text","Button & Border"],
-correct:0
-},
-{
-question:"Role-based systems control:",
-options:["Permissions","Colors","Fonts","Spacing"],
-correct:0
-},
-{
-question:"Security improves with:",
-options:["Plain passwords","Backend validation","No login","Console logs"],
-correct:1
-},
-{
-question:"Timer improves:",
-options:["Random errors","Exam fairness","Font size","Page layout"],
-correct:1
-}
-];
+<div class="note">
+Cybersecurity is not a tool.
+It is a mindset.
+</div>
 
-const quizContainer = document.getElementById("quiz");
+</div>
 
-function renderQuiz(){
-    questions.forEach((q,index)=>{
-        const div=document.createElement("div");
-        div.innerHTML=`<p><strong>${index+1}. ${q.question}</strong></p>`;
-        q.options.forEach((opt,i)=>{
-            div.innerHTML+=`
-            <label>
-            <input type="radio" name="q${index}" value="${i}">
-            ${opt}
-            </label><br>`;
-        });
-        quizContainer.appendChild(div);
-    });
-}
+<div class="section">
+<h2>Final Assessment Quiz</h2>
 
-renderQuiz();
+<div class="quiz">
+<p>1. What is Defense in Depth?</p>
+<button onclick="alert('Correct! It means layered security.')">Show Answer</button>
+</div>
 
-/* ===============================
-   TIMER SYSTEM
-=================================*/
+<div class="quiz">
+<p>2. What is the first phase of Incident Response?</p>
+<button onclick="alert('Preparation')">Show Answer</button>
+</div>
 
-let timeLeft = 60;
-const timerElement = document.getElementById("timer");
+</div>
 
-const countdown = setInterval(()=>{
-    timeLeft--;
-    timerElement.textContent = timeLeft;
-
-    if(timeLeft <= 0){
-        clearInterval(countdown);
-        submitQuiz();
-    }
-},1000);
-
-/* ===============================
-   SUBMIT LOGIC
-=================================*/
-
-function submitQuiz(){
-
-    clearInterval(countdown);
-
-    let score = 0;
-
-    questions.forEach((q,index)=>{
-        const selected=document.querySelector(`input[name="q${index}"]:checked`);
-        if(selected && parseInt(selected.value)===q.correct){
-            score++;
-        }
-    });
-
-    const percentage = (score/questions.length)*100;
-
-    localStorage.setItem("module4Score",percentage);
-
-    if(percentage>=70){
-        localStorage.setItem("module4Passed",true);
-
-        document.getElementById("result").innerHTML =
-        `✅ PASSED with ${percentage}%`;
-
-        generateCertificate();
-
-    } else{
-        document.getElementById("result").innerHTML =
-        `❌ FAILED with ${percentage}%. Retake Required.`;
-    }
-
-}
-
-/* ===============================
-   CERTIFICATE SYSTEM
-=================================*/
-
-function generateCertificate(){
-
-    document.getElementById("studentName").innerText = loggedInUser;
-
-    document.getElementById("certificate").style.display = "block";
-}
-
-</script>
+<br><br>
+<button onclick="window.location.href='dashboard.html'">Back to Dashboard</button>
 
 </body>
 </html>
