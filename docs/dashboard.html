@@ -9,18 +9,45 @@
 
 <h1>CyberLearn Dashboard</h1>
 
+<h2>Module 1</h2>
+<p>Cybersecurity Foundations</p>
+<button onclick="openModule1()">Start Module 1</button>
+
+<h2>Module 2</h2>
+<p>Networking Basics</p>
+<button onclick="openModule2()">Start Module 2</button>
+
+<h2>Module 3</h2>
+<p>Ethical Hacking</p>
+<button onclick="openModule3()">Start Module 3</button>
+
+<h2>Module 4</h2>
 <button onclick="openModule4()">Open Module 4</button>
 
 <script>
+
 const user = localStorage.getItem("loggedInUser");
 
 if(!user){
     window.location.href = "index.html";
 }
 
+function openModule1(){
+    window.location.href = "module1.html";
+}
+
+function openModule2(){
+    window.location.href = "module2.html";
+}
+
+function openModule3(){
+    window.location.href = "module3.html";
+}
+
 function openModule4(){
     window.location.href = "module4.html";
 }
+
 </script>
 
 </body>
