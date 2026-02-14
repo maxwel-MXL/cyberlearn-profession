@@ -96,4 +96,11 @@ window.location.href="certificate.html";
 
 </script>
 
+<script>
+const user = localStorage.getItem("loggedInUser");
+
+if(!user){
+    window.location.href = "index.html";
+}
+</script>
 
