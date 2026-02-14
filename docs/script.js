@@ -1,3 +1,5 @@
+console.log("Script is connected");
+
 // ================= LOGIN SYSTEM =================
 
 function login() {
