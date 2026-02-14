@@ -143,6 +143,13 @@ button:hover{
     background:#1f2937;
     color:white;
 }
+const user = localStorage.getItem("loggedInUser");
+
+if(!user){
+    window.location.href = "index.html";
+}
+
+document.getElementById("user").innerText = user;
 
 </body>
 </html>
