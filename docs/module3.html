@@ -1,168 +1,75 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Module 3 - Cybersecurity Fundamentals</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+// ===== LOGIN =====
+function login() {
+  let username = document.getElementById("username");
+  if (!username) return;
 
-<div class="module-container">
+  let value = username.value.trim();
+  if (value === "") {
+    alert("Enter username");
+    return;
+  }
 
-<h1>Module 3: Cybersecurity Fundamentals</h1>
+  localStorage.setItem("user", value);
+  window.location.href = "dashboard.html";
+}
 
-<!-- INTRODUCTION -->
-<section>
-  <h2>1. Introduction to Cybersecurity</h2>
-  <p>
-    Cybersecurity refers to the practice of protecting computer systems,
-    networks, programs, and data from digital attacks. These attacks are
-    commonly designed to access, modify, destroy, or steal sensitive information.
-  </p>
+// ===== MODULE 3 QUIZ =====
 
-  <p>
-    In today's digital world, cybersecurity has become essential because
-    individuals, businesses, governments, and organizations rely heavily
-    on digital systems to operate efficiently.
-  </p>
+let currentQuestion = 0;
+let score = 0;
 
-  <h3>Key Objectives of Cybersecurity</h3>
-  <ul>
-    <li><strong>Confidentiality</strong> – Protecting sensitive information from unauthorized access.</li>
-    <li><strong>Integrity</strong> – Ensuring information is accurate and not altered.</li>
-    <li><strong>Availability</strong> – Ensuring systems and data are accessible when needed.</li>
-  </ul>
-</section>
+const quizData = [
+  {
+    question: "What is the main goal of cybersecurity?",
+    answers: ["Entertainment", "Protect systems and data", "Speed up internet"],
+    correct: 1
+  },
+  {
+    question: "Phishing attacks target?",
+    answers: ["Hardware", "Human users", "Cables"],
+    correct: 1
+  },
+  {
+    question: "Ransomware does what?",
+    answers: ["Encrypts data", "Boosts speed", "Deletes browser"],
+    correct: 0
+  }
+];
 
-<!-- TYPES OF THREATS -->
-<section>
-  <h2>2. Types of Cyber Threats</h2>
+function loadQuiz() {
+  if (!document.getElementById("question")) return;
+  showQuestion();
+}
 
-  <h3>2.1 Malware</h3>
-  <p>
-    Malware is malicious software designed to harm or exploit devices.
-    Examples include viruses, worms, trojans, spyware, and ransomware.
-  </p>
+function showQuestion() {
+  const questionEl = document.getElementById("question");
+  const answersEl = document.getElementById("answers");
 
-  <h3>2.2 Phishing</h3>
-  <p>
-    Phishing attacks trick users into revealing sensitive information
-    such as passwords or credit card details through fake emails or websites.
-  </p>
+  questionEl.innerText = quizData[currentQuestion].question;
+  answersEl.innerHTML = "";
 
-  <h3>2.3 Ransomware</h3>
-  <p>
-    Ransomware locks or encrypts a victim’s data and demands payment
-    in exchange for restoring access.
-  </p>
+  quizData[currentQuestion].answers.forEach((answer, index) => {
+    const button = document.createElement("button");
+    button.innerText = answer;
+    button.onclick = () => selectAnswer(index);
+    answersEl.appendChild(button);
+  });
+}
 
-  <h3>2.4 Social Engineering</h3>
-  <p>
-    Social engineering manipulates people into breaking security procedures.
-    Instead of hacking systems directly, attackers exploit human psychology.
-  </p>
-</section>
+function selectAnswer(index) {
+  if (index === quizData[currentQuestion].correct) {
+    score++;
+  }
+}
 
-<!-- SECURITY MEASURES -->
-<section>
-  <h2>3. Cybersecurity Protection Measures</h2>
+function nextQuestion() {
+  currentQuestion++;
+  if (currentQuestion < quizData.length) {
+    showQuestion();
+  } else {
+    document.getElementById("quizResult").innerText =
+      "Final Score: " + score + "/" + quizData.length;
+  }
+}
 
-  <h3>3.1 Strong Password Practices</h3>
-  <p>
-    Users should create complex passwords combining letters, numbers,
-    and special characters. Password reuse should be avoided.
-  </p>
-
-  <h3>3.2 Multi-Factor Authentication (MFA)</h3>
-  <p>
-    MFA adds an extra layer of security by requiring two or more
-    verification factors before granting access.
-  </p>
-
-  <h3>3.3 Firewalls</h3>
-  <p>
-    Firewalls monitor incoming and outgoing network traffic
-    and block suspicious activity.
-  </p>
-
-  <h3>3.4 Antivirus Software</h3>
-  <p>
-    Antivirus programs detect, prevent, and remove malicious software.
-  </p>
-</section>
-
-<!-- REAL WORLD EXAMPLES -->
-<section>
-  <h2>4. Real-World Cybersecurity Incidents</h2>
-
-  <p>
-    Many large organizations have suffered data breaches due to weak
-    security practices. These incidents demonstrate the importance of
-    cybersecurity awareness and system protection.
-  </p>
-
-  <ul>
-    <li>Data breaches exposing millions of user accounts</li>
-    <li>Ransomware attacks on hospitals</li>
-    <li>Financial fraud through phishing scams</li>
-  </ul>
-</section>
-
-<!-- IMPORTANCE -->
-<section>
-  <h2>5. Importance of Cybersecurity in Modern Society</h2>
-
-  <p>
-    As technology continues to evolve, cybersecurity becomes more critical.
-    Without strong security measures, digital systems become vulnerable
-    to exploitation, causing financial loss, identity theft, and operational disruption.
-  </p>
-<hr>
-
-<section class="case-study">
-  <h2>6. Case Study Scenario</h2>
-  <p>
-    A company employee receives an email claiming to be from IT support
-    asking them to urgently reset their password using a provided link.
-    The email looks official but the URL is slightly different from the company domain.
-  </p>
-
-  <p><strong>Question:</strong> What type of attack is this most likely?</p>
-  <ul>
-    <li>Brute Force</li>
-    <li>Phishing</li>
-    <li>DDoS</li>
-  </ul>
-</section>
-
-<hr>
-
-<section class="quiz-section">
-  <h2>Module 3 Final Assessment</h2>
-
-  <div class="quiz-box">
-    <p id="question"></p>
-    <div id="answers"></div>
-
-    <button onclick="nextQuestion()">Next</button>
-    <p id="quizResult"></p>
-  </div>
-</section>
-
-<div id="certificate" style="display:none;">
-  <h2>🎓 Certificate of Completion</h2>
-  <p id="certificateText"></p>
-</div>
-
-  <p>
-    Cybersecurity is not only a technical responsibility but also a shared
-    responsibility among users, organizations, and governments.
-  </p>
-</section>
-
-<br>
-<a href="dashboard.html" class="start-btn">⬅ Back to Dashboard</a>
-
-</div>
-
-</body>
-</html>
+window.addEventListener("DOMContentLoaded", loadQuiz);
