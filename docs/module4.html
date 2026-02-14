@@ -1,37 +1,67 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Module 4 - Advanced Cybersecurity</title>
+    <title>Module 4 - Professional Cybersecurity Engineering</title>
     <style>
         body{
             margin:0;
             font-family:Segoe UI, sans-serif;
             background:#0b1220;
             color:white;
+        }
+
+        .sidebar{
+            width:250px;
+            height:100vh;
+            position:fixed;
+            background:#111827;
+            padding:25px;
+            overflow:auto;
+        }
+
+        .sidebar h2{
+            color:#4da6ff;
+        }
+
+        .sidebar a{
+            display:block;
+            margin:15px 0;
+            color:#9ca3af;
+            text-decoration:none;
+        }
+
+        .sidebar a:hover{
+            color:white;
+        }
+
+        .main{
+            margin-left:270px;
             padding:40px;
-            line-height:1.7;
+        }
+
+        .section{
+            margin-bottom:60px;
+            padding:30px;
+            background:#111827;
+            border-radius:12px;
         }
 
         h1,h2{
             color:#4da6ff;
         }
 
-        .section{
-            margin-bottom:50px;
-            padding:25px;
-            background:#111827;
-            border-radius:12px;
-        }
-
         .note{
             background:#1f2937;
             padding:15px;
-            border-left:5px solid #4da6ff;
             margin-top:15px;
+            border-left:5px solid #4da6ff;
         }
 
-        .quiz{
-            margin-top:20px;
+        pre{
+            background:#1f2937;
+            padding:15px;
+            border-radius:8px;
+            overflow:auto;
         }
 
         button{
@@ -41,160 +71,187 @@
             color:white;
             border-radius:8px;
             cursor:pointer;
+            margin-top:10px;
         }
 
         button:hover{
             background:#1d4ed8;
+        }
+
+        .progress-bar{
+            background:#1f2937;
+            border-radius:20px;
+            height:20px;
+            margin-top:10px;
+            overflow:hidden;
+        }
+
+        .progress-fill{
+            height:100%;
+            background:#4da6ff;
+            width:0%;
         }
     </style>
 </head>
 
 <body>
 
-<h1>Module 4: Advanced Cybersecurity & Professional Practice</h1>
+<div class="sidebar">
+    <h2>Module 4</h2>
+    <a href="#architecture">Security Architecture</a>
+    <a href="#threat">Threat Modeling</a>
+    <a href="#incident">Incident Response</a>
+    <a href="#securecoding">Secure Coding</a>
+    <a href="#lab">Hands-On Lab</a>
+    <a href="#quiz">Assessment</a>
+    <a href="dashboard.html">Back to Dashboard</a>
+</div>
 
-<div class="section">
-<h2>1. Security Architecture Design</h2>
+<div class="main">
+
+<h1>Professional Cybersecurity Engineering</h1>
+
+<div class="progress-bar">
+    <div class="progress-fill" id="progress"></div>
+</div>
+
+<!-- SECTION 1 -->
+<div class="section" id="architecture">
+<h2>1. Enterprise Security Architecture</h2>
 
 <p>
-Security architecture is the structured design of systems to prevent, detect,
-and respond to cyber threats.
-</p>
-
-<p>
-A professional security architecture includes:
+Security architecture defines how systems, networks, and applications
+are structured to resist modern cyber attacks.
 </p>
 
 <ul>
-<li>Layered Defense (Defense in Depth)</li>
-<li>Zero Trust Model</li>
-<li>Network Segmentation</li>
-<li>Access Control Policies</li>
+<li>Zero Trust Architecture</li>
+<li>Micro-Segmentation</li>
+<li>Identity-Centric Security</li>
+<li>Cloud Security Controls</li>
 </ul>
 
 <div class="note">
-<strong>Professional Note:</strong>
-A secure system is not built by adding security later.
-Security must be integrated during system design.
+Professional Insight:
+Security must be embedded during design,
+not added after deployment.
 </div>
 
 </div>
 
-<div class="section">
-<h2>2. Threat Modeling</h2>
+<!-- SECTION 2 -->
+<div class="section" id="threat">
+<h2>2. Threat Modeling (Real-World Approach)</h2>
 
 <p>
-Threat modeling identifies potential attackers, assets, vulnerabilities,
-and possible attack paths.
+Threat modeling identifies attack vectors before attackers do.
 </p>
 
-<p>
-Popular frameworks:
-</p>
+<p>Enterprise Frameworks:</p>
 
 <ul>
 <li>STRIDE</li>
-<li>DREAD</li>
 <li>MITRE ATT&CK</li>
+<li>OWASP Risk Rating</li>
 </ul>
 
 <div class="note">
-Professional developers always perform threat modeling
-before deploying applications.
+Case Study:
+An e-commerce platform without threat modeling
+was compromised through insecure API endpoints.
 </div>
 
 </div>
 
-<div class="section">
-<h2>3. Incident Response Planning</h2>
+<!-- SECTION 3 -->
+<div class="section" id="incident">
+<h2>3. Incident Response Simulation</h2>
 
 <p>
-Incident response is a structured approach to handling security breaches.
-</p>
-
-<p>
-Phases:
+Imagine ransomware is detected in your network.
+What do you do first?
 </p>
 
 <ol>
-<li>Preparation</li>
-<li>Identification</li>
-<li>Containment</li>
-<li>Eradication</li>
-<li>Recovery</li>
-<li>Lessons Learned</li>
+<li>Isolate infected machines</li>
+<li>Notify response team</li>
+<li>Preserve forensic evidence</li>
+<li>Restore from clean backup</li>
 </ol>
 
 <div class="note">
-Without an incident response plan,
-organizations lose money, reputation, and trust.
+Enterprise teams rehearse this quarterly.
+Preparation saves millions.
 </div>
 
 </div>
 
-<div class="section">
-<h2>4. Secure Coding Practices</h2>
+<!-- SECTION 4 -->
+<div class="section" id="securecoding">
+<h2>4. Secure Coding (Advanced)</h2>
+
+<p>Example: Preventing SQL Injection</p>
+
+<pre>
+const query = "SELECT * FROM users WHERE username = ?";
+db.execute(query, [username]);
+</pre>
+
+<p>Never concatenate raw user input into SQL queries.</p>
+
+<div class="note">
+Secure coding is the responsibility of every developer.
+</div>
+
+</div>
+
+<!-- SECTION 5 -->
+<div class="section" id="lab">
+<h2>5. Hands-On Lab</h2>
 
 <p>
-Developers must avoid common vulnerabilities:
+Lab Scenario:
+Identify 3 vulnerabilities in this insecure login system:
 </p>
 
-<ul>
-<li>SQL Injection</li>
-<li>Cross-Site Scripting (XSS)</li>
-<li>Insecure Authentication</li>
-<li>Improper Input Validation</li>
-</ul>
-
-<p>Example of secure input validation in JavaScript:</p>
-
-<pre style="background:#1f2937; padding:15px; border-radius:8px;">
-const username = input.value.trim();
-if(username.length < 3){
-    alert("Username too short");
+<pre>
+if(password == "admin123"){
+    login();
 }
 </pre>
 
-</div>
-
-<div class="section">
-<h2>5. Professional Security Mindset</h2>
-
-<p>
-Professional cybersecurity experts:
-</p>
-
-<ul>
-<li>Think like attackers</li>
-<li>Continuously update knowledge</li>
-<li>Follow compliance standards</li>
-<li>Document everything</li>
-</ul>
-
-<div class="note">
-Cybersecurity is not a tool.
-It is a mindset.
-</div>
+<button onclick="alert('Weak hardcoded password, no hashing, no input validation')">
+Reveal Vulnerabilities
+</button>
 
 </div>
 
-<div class="section">
-<h2>Final Assessment Quiz</h2>
+<!-- QUIZ -->
+<div class="section" id="quiz">
+<h2>Final Professional Assessment</h2>
 
-<div class="quiz">
-<p>1. What is Defense in Depth?</p>
-<button onclick="alert('Correct! It means layered security.')">Show Answer</button>
-</div>
+<p>1. What is Zero Trust?</p>
+<button onclick="increaseProgress()">Answer: Never trust, always verify</button>
 
-<div class="quiz">
-<p>2. What is the first phase of Incident Response?</p>
-<button onclick="alert('Preparation')">Show Answer</button>
+<p>2. First step in ransomware response?</p>
+<button onclick="increaseProgress()">Isolate affected systems</button>
+
+<p>3. Why use prepared statements?</p>
+<button onclick="increaseProgress()">Prevent SQL Injection</button>
+
 </div>
 
 </div>
 
-<br><br>
-<button onclick="window.location.href='dashboard.html'">Back to Dashboard</button>
+<script>
+let progress = 0;
+
+function increaseProgress(){
+    progress += 33;
+    if(progress > 100) progress = 100;
+    document.getElementById("progress").style.width = progress + "%";
+}
+</script>
 
 </body>
 </html>
