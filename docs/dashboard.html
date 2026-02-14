@@ -1,155 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard - CyberLearn</title>
+    <title>CyberLearn Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header class="topbar">
-    <h1>CyberLearn Dashboard</h1>
-</header>
+<h1>CyberLearn Dashboard</h1>
 
-<section class="modules">
+<button onclick="openModule4()">Open Module 4</button>
 
-    <div class="card">
-        <h2>Module 1</h2>
-        <p>Cybersecurity Foundations</p>
-        <a href="module1.html"><button>Start Module</button></a>
-    </div>
-
-    <div class="card">
-        <h2>Module 2</h2>
-        <p>Networking Basics</p>
- Network Fundamental
- IP Addressing & Subnetting
- Transport Layer (TCP/UDP)
- Routing & Switching
- Network Security Basics
- Troubleshooting & Labs
-
-   <a href="module2.html" class="start-btn">Start Module</a>
-     
-    </div>
-
-    <div class="card">
-        <h2>Module 3</h2><a href="module3.html" class="start-btn">Start Module 3</a>
-
-        <p>Ethical Hacking</p>
-    </div>
-<button id="module4Btn">Open Module 4</button>
-<button id="module5Btn">Open Module 5</button>
-
-</section>
-body{
-    margin:0;
-    font-family: 'Segoe UI', sans-serif;
-    background:#f9fafb;
-}
-
-.sidebar{
-    width:260px;
-    height:100vh;
-    background:linear-gradient(180deg,#111827,#1f2937);
-    color:white;
-    position:fixed;
-    padding:25px;
-}
-
-.sidebar h2{
-    margin-bottom:50px;
-    font-weight:600;
-}
-
-.sidebar a{
-    display:block;
-    color:#9ca3af;
-    text-decoration:none;
-    margin:18px 0;
-    font-size:15px;
-}
-
-.sidebar a:hover{
-    color:white;
-}
-
-.main{
-    margin-left:260px;
-    padding:40px;
-}
-
-.topbar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:30px;
-}
-
-.card{
-    background:white;
-    padding:25px;
-    border-radius:15px;
-    box-shadow:0 15px 30px rgba(0,0,0,0.05);
-    margin-bottom:30px;
-}
-
-.stats{
-    display:flex;
-    gap:20px;
-}
-
-.stat-card{
-    flex:1;
-    padding:20px;
-    background:white;
-    border-radius:15px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.05);
-}
-
-button{
-    padding:10px 20px;
-    background:#2563eb;
-    color:white;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-}
-
-button:hover{
-    background:#1d4ed8;
-}
-
-.progress-bar{
-    width:100%;
-    background:#e5e7eb;
-    border-radius:20px;
-    overflow:hidden;
-    margin-top:10px;
-}
-
-.progress-fill{
-    height:15px;
-    background:#10b981;
-    width:0%;
-}
-
-.dark-mode{
-    background:#111827;
-    color:white;
-}
-
-.dark-mode .card,
-.dark-mode .stat-card{
-    background:#1f2937;
-    color:white;
-}
+<script>
 const user = localStorage.getItem("loggedInUser");
 
 if(!user){
     window.location.href = "index.html";
 }
 
-document.getElementById("user").innerText = user;
+function openModule4(){
+    window.location.href = "module4.html";
+}
+</script>
 
 </body>
 </html>
