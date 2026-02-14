@@ -1,75 +1,156 @@
-// ===== LOGIN =====
-function login() {
-  let username = document.getElementById("username");
-  if (!username) return;
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Module 3 - Advanced Learning</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+        }
 
-  let value = username.value.trim();
-  if (value === "") {
-    alert("Enter username");
-    return;
-  }
+        .container {
+            width: 95%;
+            margin: auto;
+            padding: 40px;
+        }
 
-  localStorage.setItem("user", value);
-  window.location.href = "dashboard.html";
-}
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 40px;
+        }
 
-// ===== MODULE 3 QUIZ =====
+        .content-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
 
-let currentQuestion = 0;
-let score = 0;
+        .quiz-box {
+            margin-top: 30px;
+        }
 
-const quizData = [
-  {
-    question: "What is the main goal of cybersecurity?",
-    answers: ["Entertainment", "Protect systems and data", "Speed up internet"],
-    correct: 1
-  },
-  {
-    question: "Phishing attacks target?",
-    answers: ["Hardware", "Human users", "Cables"],
-    correct: 1
-  },
-  {
-    question: "Ransomware does what?",
-    answers: ["Encrypts data", "Boosts speed", "Deletes browser"],
-    correct: 0
-  }
+        .question {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Module 3: Advanced Concepts</h1>
+
+    <div class="content-box">
+        <h2>Lesson Content</h2>
+        <p>
+            In this module, you will learn advanced concepts including system design,
+            application structure, user authentication flow, and quiz logic handling.
+        </p>
+
+        <p>
+            We will also cover how to store user data, validate login,
+            and dynamically generate quiz questions.
+        </p>
+    </div>
+
+    <div class="content-box quiz-box">
+        <h2>Module 3 Quiz</h2>
+
+        <div id="quiz"></div>
+
+        <button onclick="submitQuiz()">Submit Quiz</button>
+
+        <div id="result"></div>
+    </div>
+</div>
+
+<script>
+const questions = [
+    {
+        question: "1. What is JavaScript mainly used for?",
+        options: ["Styling pages", "Adding interactivity", "Creating databases", "Printing documents"],
+        answer: 1
+    },
+    {
+        question: "2. Which tag links JavaScript file?",
+        options: ["<script>", "<js>", "<link>", "<style>"],
+        answer: 0
+    },
+    {
+        question: "3. What does CSS control?",
+        options: ["Structure", "Logic", "Style", "Database"],
+        answer: 2
+    },
+    {
+        question: "4. What is localStorage used for?",
+        options: ["Saving data in browser", "Styling", "Hosting", "Printing"],
+        answer: 0
+    },
+    {
+        question: "5. Which method checks condition?",
+        options: ["if()", "loop()", "style()", "link()"],
+        answer: 0
+    },
+    {
+        question: "6. What does HTML stand for?",
+        options: ["Hyper Trainer Marking Language", "Hyper Text Markup Language", "High Text Machine Language", "None"],
+        answer: 1
+    }
 ];
 
-function loadQuiz() {
-  if (!document.getElementById("question")) return;
-  showQuestion();
+const quizDiv = document.getElementById("quiz");
+
+questions.forEach((q, index) => {
+    let questionHTML = `<div class="question"><p>${q.question}</p>`;
+    q.options.forEach((option, i) => {
+        questionHTML += `
+            <label>
+                <input type="radio" name="q${index}" value="${i}">
+                ${option}
+            </label><br>`;
+    });
+    questionHTML += "</div>";
+    quizDiv.innerHTML += questionHTML;
+});
+
+function submitQuiz() {
+    let score = 0;
+
+    questions.forEach((q, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        if (selected && parseInt(selected.value) === q.answer) {
+            score++;
+        }
+    });
+
+    document.getElementById("result").innerHTML =
+        "You scored " + score + " out of " + questions.length;
 }
+</script>
 
-function showQuestion() {
-  const questionEl = document.getElementById("question");
-  const answersEl = document.getElementById("answers");
-
-  questionEl.innerText = quizData[currentQuestion].question;
-  answersEl.innerHTML = "";
-
-  quizData[currentQuestion].answers.forEach((answer, index) => {
-    const button = document.createElement("button");
-    button.innerText = answer;
-    button.onclick = () => selectAnswer(index);
-    answersEl.appendChild(button);
-  });
-}
-
-function selectAnswer(index) {
-  if (index === quizData[currentQuestion].correct) {
-    score++;
-  }
-}
-
-function nextQuestion() {
-  currentQuestion++;
-  if (currentQuestion < quizData.length) {
-    showQuestion();
-  } else {
-    document.getElementById("quizResult").innerText =
-      "Final Score: " + score + "/" + quizData.length;
-  }
-}
-
-window.addEventListener("DOMContentLoaded", loadQuiz);
+</body>
+</html>
