@@ -204,7 +204,36 @@ button:hover {
 
 .module-container {
   max-width: 1000px;
+  marg.module-container {
+  width: 95%;
+  max-width: 1400px;
   margin: auto;
+  padding: 40px;
+  line-height: 1.9;
+  font-size: 18px;
+}
+
+.module-container h1 {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+
+.module-container section {
+  margin-bottom: 60px;
+}
+
+.module-container h2 {
+  font-size: 28px;
+  color: #0a58ca;
+  margin-bottom: 15px;
+}
+
+.module-container h3 {
+  font-size: 22px;
+  margin-top: 20px;
+}
+in: auto;
   padding: 30px;
   line-height: 1.8;
 }
