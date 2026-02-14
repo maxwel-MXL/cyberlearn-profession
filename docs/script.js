@@ -1,15 +1,11 @@
 console.log("Script is connected");
-
-// ================= LOGIN SYSTEM =================
-
+// ===== LOGIN =====
 function login() {
   let username = document.getElementById("username");
-
   if (!username) return;
 
-  let value = username.value;
-
-  if (value.trim() === "") {
+  let value = username.value.trim();
+  if (value === "") {
     alert("Enter username");
     return;
   }
@@ -18,11 +14,10 @@ function login() {
   window.location.href = "dashboard.html";
 }
 
-// ================= MODULE 3 QUIZ SYSTEM =================
+// ===== MODULE 3 QUIZ =====
 
 let currentQuestion = 0;
 let score = 0;
-const passMark = 10;
 
 const quizData = [
   {
@@ -31,28 +26,13 @@ const quizData = [
     correct: 1
   },
   {
-    question: "Which of these is malware?",
-    answers: ["Firewall", "Virus", "Router"],
-    correct: 1
-  },
-  {
-    question: "Phishing attacks mainly target:",
+    question: "Phishing attacks target?",
     answers: ["Hardware", "Human users", "Cables"],
     correct: 1
   },
   {
-    question: "Confidentiality ensures:",
-    answers: ["Data is secret", "Data is fast", "Data is colorful"],
-    correct: 0
-  },
-  {
-    question: "Integrity ensures:",
-    answers: ["Data is changed", "Data is accurate", "Data is deleted"],
-    correct: 1
-  },
-  {
-    question: "Availability ensures:",
-    answers: ["System access when needed", "System shutdown", "System formatting"],
+    question: "Ransomware does what?",
+    answers: ["Encrypts data", "Boosts speed", "Deletes browser"],
     correct: 0
   }
 ];
@@ -85,20 +65,14 @@ function selectAnswer(index) {
 
 function nextQuestion() {
   currentQuestion++;
-
   if (currentQuestion < quizData.length) {
     showQuestion();
   } else {
-    finishQuiz();
+    document.getElementById("quizResult").innerText =
+      "Final Score: " + score + "/" + quizData.length;
   }
 }
 
-function finishQuiz() {
-  document.getElementById("question").style.display = "none";
-  document.getElementById("answers").style.display = "none";
-
-  document.getElementById("quizResult").innerText =
-    "Final Score: " + score + "/" + quizData.length;
-}
-
 window.addEventListener("DOMContentLoaded", loadQuiz);
+
+
