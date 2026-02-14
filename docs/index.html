@@ -1,17 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CyberLearn Login</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Login - DevLMS</title>
 </head>
-<body class="center-page">
+<body style="font-family:Arial; text-align:center; margin-top:100px;">
 
-<div class="login-box">
-    <h1>CyberLearn</h1>
-    <input type="text" id="username" placeholder="Enter Username">
+    <h1>DevLMS Login</h1>
+
+    <input type="text" id="username" placeholder="Enter your name">
+    <br><br>
     <button onclick="login()">Login</button>
-</div>
 
-<script src="script.js"></script>
+<script>
+
+function login(){
+
+    const username = document.getElementById("username").value;
+
+    if(username === ""){
+        alert("Please enter your name");
+        return;
+    }
+
+    localStorage.setItem("loggedInUser", username);
+
+    window.location.href = "dashboard.html";
+}
+
+</script>
+
 </body>
 </html>
