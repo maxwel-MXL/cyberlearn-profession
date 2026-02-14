@@ -26,6 +26,59 @@ text-align:center;
 font-family:Arial;
 margin:100px;
 }
+<!DOCTYPE html>
+<html>
+<head>
+<title>Certificate</title>
+
+<style>
+body{
+text-align:center;
+font-family:Arial;
+margin:100px;
+}
+
+#certificate{
+border:5px solid #0d6efd;
+padding:40px;
+}
+
+button{
+padding:10px 20px;
+margin-top:20px;
+background:#0d6efd;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+</style>
+
+</head>
+<body>
+
+<div id="certificate">
+<h1>Certificate of Completion</h1>
+<p>This certifies that</p>
+<h2 id="name"></h2>
+<p>Has successfully completed the Enterprise LMS Professional Module.</p>
+</div>
+
+<button onclick="downloadPDF()">Download Certificate</button>
+
+<script>
+
+const student = localStorage.getItem("loggedInUser");
+document.getElementById("name").innerText = student;
+
+function downloadPDF(){
+window.print();
+}
+
+</script>
+
+</body>
+</html>
 
 #certificate{
 border:5px solid #0d6efd;
