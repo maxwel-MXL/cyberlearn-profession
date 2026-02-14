@@ -31,3 +31,18 @@ function login(){
 
 </body>
 </html>
+<input type="text" id="username" placeholder="Enter ID">
+<button onclick="login()">Login</button>
+
+<script>
+function login(){
+    const username = document.getElementById("username").value;
+
+    if(username.trim() !== ""){
+        localStorage.setItem("loggedInUser", username);
+        window.location.href = "dashboard.html";
+    } else {
+        alert("Please enter your ID");
+    }
+}
+</script>
