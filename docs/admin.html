@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Panel - Enterprise LMS</title>
+
+<style>
+body{
+font-family:Arial;
+background:#f4f6f9;
+margin:40px;
+}
+
+.box{
+background:white;
+padding:25px;
+margin-bottom:30px;
+border-radius:10px;
+box-shadow:0 0 15px rgba(0,0,0,0.08);
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th,td{
+border:1px solid #ddd;
+padding:10px;
+text-align:left;
+}
+
+th{
+background:#0d6efd;
+color:white;
+}
+</style>
+
+</head>
+<body>
+
+<h1>Admin Control Panel</h1>
+
+<div class="box">
+<h2>📊 Student Records</h2>
+<table>
+<thead>
+<tr>
+<th>Student Name</th>
+<th>Module 4 Score</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody id="records"></tbody>
+</table>
+</div>
+
+<script>
+
+const recordsBody = document.getElementById("records");
+
+const student = localStorage.getItem("loggedInUser");
+const score = localStorage.getItem("module4Score");
+const passed = localStorage.getItem("module4Passed");
+
+if(student && score){
+
+let status = passed ? "PASSED" : "FAILED";
+
+recordsBody.innerHTML += `
+<tr>
+<td>${student}</td>
+<td>${score}%</td>
+<td>${status}</td>
+</tr>
+`;
+}
+
+</script>
+
+</body>
+</html>
