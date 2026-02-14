@@ -640,3 +640,613 @@ function submitQuiz() {
 
 </body>
 </html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Module 4 - Professional Web Systems Development</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 40px;
+            line-height: 1.7;
+        }
+
+        h1, h2, h3 {
+            color: #1e2a38;
+        }
+
+        .content-box {
+            background: white;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.08);
+        }
+
+        button {
+            padding: 12px 20px;
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background-color: #084298;
+        }
+
+        #result {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .section-title {
+            border-left: 5px solid #0d6efd;
+            padding-left: 10px;
+        }
+
+        pre {
+            background: #f1f1f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Module 4: Intermediate → Advanced → Professional Developer System</h1>
+
+<!-- INTRODUCTION -->
+<div class="content-box">
+    <h2 class="section-title">📘 Introduction</h2>
+
+    <p>
+        Module 4 represents the transition from beginner-level web development
+        to structured professional system development.
+    </p>
+
+    <p>
+        In this module, you will learn how to build applications that behave
+        like real-world systems such as:
+    </p>
+
+    <ul>
+        <li>Learning Management Systems (LMS)</li>
+        <li>Online Examination Platforms</li>
+        <li>Banking Dashboards</li>
+        <li>Enterprise Applications</li>
+    </ul>
+
+    <p>
+        We will explore architecture, structure, modular programming,
+        data persistence, and system-level thinking.
+    </p>
+</div>
+
+<!-- INTERMEDIATE SECTION -->
+<div class="content-box">
+    <h2 class="section-title">🔹 Intermediate Level Development</h2>
+
+    <h3>1️⃣ Structured Quiz Engine</h3>
+
+    <p>
+        Instead of writing questions directly in HTML,
+        we use JavaScript arrays of objects.
+    </p>
+
+<pre>
+const question = {
+    question: "What is modular programming?",
+    options: ["Unorganized code", "Reusable structured code"],
+    correct: 1
+};
+</pre>
+
+    <p>
+        This allows scalability and easier management of large systems.
+    </p>
+
+    <h3>2️⃣ Pass Mark Enforcement</h3>
+
+    <p>
+        A professional learning system enforces a minimum pass mark.
+        Common pass mark: 70%.
+    </p>
+
+    <h3>3️⃣ Progress Tracking</h3>
+
+    <p>
+        Progress tracking ensures a user cannot skip modules.
+        We store completion status using localStorage.
+    </p>
+
+<pre>
+localStorage.setItem("module4Completed", true);
+</pre>
+
+</div>
+
+<!-- ADVANCED SECTION -->
+<div class="content-box">
+    <h2 class="section-title">🔹 Advanced Development Architecture</h2>
+
+    <h3>1️⃣ Modular JavaScript</h3>
+
+    <p>
+        Instead of writing everything in one function,
+        professional systems separate responsibilities.
+    </p>
+
+    <ul>
+        <li>renderQuiz()</li>
+        <li>calculateScore()</li>
+        <li>storeResults()</li>
+        <li>unlockNextModule()</li>
+    </ul>
+
+    <h3>2️⃣ Error Handling</h3>
+
+<pre>
+if(!selectedAnswer){
+    alert("Please select an answer before submitting.");
+    return;
+}
+</pre>
+
+    <p>
+        This prevents logical system errors.
+    </p>
+
+    <h3>3️⃣ Clean Code Principles</h3>
+
+    <ul>
+        <li>Readable variable names</li>
+        <li>No repeated logic</li>
+        <li>Organized sections</li>
+        <li>Clear flow of execution</li>
+    </ul>
+
+</div>
+
+<!-- PROFESSIONAL SECTION -->
+<div class="content-box">
+    <h2 class="section-title">🔹 Professional Developer System</h2>
+
+    <h3>1️⃣ Role-Based Access</h3>
+
+    <p>
+        Systems can define roles such as:
+    </p>
+
+    <ul>
+        <li>Admin</li>
+        <li>Instructor</li>
+        <li>Student</li>
+    </ul>
+
+    <h3>2️⃣ Module Unlock Logic</h3>
+
+<pre>
+if(score >= 70){
+    localStorage.setItem("module5Unlocked", true);
+}
+</pre>
+
+    <h3>3️⃣ Certificate Preparation Logic</h3>
+
+    <p>
+        A certificate should only be generated
+        when all modules are completed.
+    </p>
+
+    <h3>4️⃣ System Security Awareness</h3>
+
+    <ul>
+        <li>Never store passwords in plain text</li>
+        <li>Use backend validation in real systems</li>
+        <li>Use HTTPS encryption</li>
+    </ul>
+
+</div>
+
+<!-- QUIZ SECTION -->
+<div class="content-box">
+    <h2 class="section-title">📝 Module 4 Comprehensive Assessment</h2>
+
+    <div id="quiz"></div>
+    <button onclick="submitQuiz()">Submit Assessment</button>
+    <div id="result"></div>
+</div>
+
+<script>
+
+const questions = [
+{
+question: "Why is modular programming important?",
+options: ["It reduces readability", "It improves scalability", "It deletes data", "It slows performance"],
+correct: 1
+},
+{
+question: "What does localStorage allow?",
+options: ["Server storage", "Browser-based data persistence", "Database deletion", "HTML styling"],
+correct: 1
+},
+{
+question: "What is a common pass mark in LMS systems?",
+options: ["20%", "40%", "70%", "10%"],
+correct: 2
+},
+{
+question: "Professional systems separate:",
+options: ["Logic and Design", "Colors and Images", "Fonts and Buttons", "HTML and CSS"],
+correct: 0
+},
+{
+question: "Role-based systems define:",
+options: ["Page colors", "User permissions", "Font size", "Animations"],
+correct: 1
+},
+{
+question: "Which improves security?",
+options: ["Plain text password", "Backend validation", "No validation", "Disabling login"],
+correct: 1
+}
+];
+
+const quizContainer = document.getElementById("quiz");
+
+function renderQuiz(){
+    questions.forEach((q,index)=>{
+        const div=document.createElement("div");
+        div.innerHTML=`<p><strong>${index+1}. ${q.question}</strong></p>`;
+        q.options.forEach((opt,i)=>{
+            div.innerHTML+=`
+            <label>
+            <input type="radio" name="q${index}" value="${i}">
+            ${opt}
+            </label><br>`;
+        });
+        quizContainer.appendChild(div);
+    });
+}
+
+renderQuiz();
+
+function submitQuiz(){
+    let score=0;
+
+    questions.forEach((q,index)=>{
+        const selected=document.querySelector(`input[name="q${index}"]:checked`);
+        if(selected && parseInt(selected.value)===q.correct){
+            score++;
+        }
+    });
+
+    const percentage=(score/questions.length)*100;
+
+    if(percentage>=70){
+        localStorage.setItem("module4Passed", true);
+        document.getElementById("result").innerHTML=
+        `You scored ${percentage}%. ✅ PROFESSIONAL LEVEL PASSED.`;
+    } else{
+        document.getElementById("result").innerHTML=
+        `You scored ${percentage}%. ❌ Retake Required.`;
+    }
+}
+
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Module 4 - Professional Web Systems Development</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 40px;
+            line-height: 1.7;
+        }
+
+        h1, h2, h3 {
+            color: #1e2a38;
+        }
+
+        .content-box {
+            background: white;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.08);
+        }
+
+        button {
+            padding: 12px 20px;
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background-color: #084298;
+        }
+
+        #result {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .section-title {
+            border-left: 5px solid #0d6efd;
+            padding-left: 10px;
+        }
+
+        pre {
+            background: #f1f1f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Module 4: Intermediate → Advanced → Professional Developer System</h1>
+
+<!-- INTRODUCTION -->
+<div class="content-box">
+    <h2 class="section-title">📘 Introduction</h2>
+
+    <p>
+        Module 4 represents the transition from beginner-level web development
+        to structured professional system development.
+    </p>
+
+    <p>
+        In this module, you will learn how to build applications that behave
+        like real-world systems such as:
+    </p>
+
+    <ul>
+        <li>Learning Management Systems (LMS)</li>
+        <li>Online Examination Platforms</li>
+        <li>Banking Dashboards</li>
+        <li>Enterprise Applications</li>
+    </ul>
+
+    <p>
+        We will explore architecture, structure, modular programming,
+        data persistence, and system-level thinking.
+    </p>
+</div>
+
+<!-- INTERMEDIATE SECTION -->
+<div class="content-box">
+    <h2 class="section-title">🔹 Intermediate Level Development</h2>
+
+    <h3>1️⃣ Structured Quiz Engine</h3>
+
+    <p>
+        Instead of writing questions directly in HTML,
+        we use JavaScript arrays of objects.
+    </p>
+
+<pre>
+const question = {
+    question: "What is modular programming?",
+    options: ["Unorganized code", "Reusable structured code"],
+    correct: 1
+};
+</pre>
+
+    <p>
+        This allows scalability and easier management of large systems.
+    </p>
+
+    <h3>2️⃣ Pass Mark Enforcement</h3>
+
+    <p>
+        A professional learning system enforces a minimum pass mark.
+        Common pass mark: 70%.
+    </p>
+
+    <h3>3️⃣ Progress Tracking</h3>
+
+    <p>
+        Progress tracking ensures a user cannot skip modules.
+        We store completion status using localStorage.
+    </p>
+
+<pre>
+localStorage.setItem("module4Completed", true);
+</pre>
+
+</div>
+
+<!-- ADVANCED SECTION -->
+<div class="content-box">
+    <h2 class="section-title">🔹 Advanced Development Architecture</h2>
+
+    <h3>1️⃣ Modular JavaScript</h3>
+
+    <p>
+        Instead of writing everything in one function,
+        professional systems separate responsibilities.
+    </p>
+
+    <ul>
+        <li>renderQuiz()</li>
+        <li>calculateScore()</li>
+        <li>storeResults()</li>
+        <li>unlockNextModule()</li>
+    </ul>
+
+    <h3>2️⃣ Error Handling</h3>
+
+<pre>
+if(!selectedAnswer){
+    alert("Please select an answer before submitting.");
+    return;
+}
+</pre>
+
+    <p>
+        This prevents logical system errors.
+    </p>
+
+    <h3>3️⃣ Clean Code Principles</h3>
+
+    <ul>
+        <li>Readable variable names</li>
+        <li>No repeated logic</li>
+        <li>Organized sections</li>
+        <li>Clear flow of execution</li>
+    </ul>
+
+</div>
+
+<!-- PROFESSIONAL SECTION -->
+<div class="content-box">
+    <h2 class="section-title">🔹 Professional Developer System</h2>
+
+    <h3>1️⃣ Role-Based Access</h3>
+
+    <p>
+        Systems can define roles such as:
+    </p>
+
+    <ul>
+        <li>Admin</li>
+        <li>Instructor</li>
+        <li>Student</li>
+    </ul>
+
+    <h3>2️⃣ Module Unlock Logic</h3>
+
+<pre>
+if(score >= 70){
+    localStorage.setItem("module5Unlocked", true);
+}
+</pre>
+
+    <h3>3️⃣ Certificate Preparation Logic</h3>
+
+    <p>
+        A certificate should only be generated
+        when all modules are completed.
+    </p>
+
+    <h3>4️⃣ System Security Awareness</h3>
+
+    <ul>
+        <li>Never store passwords in plain text</li>
+        <li>Use backend validation in real systems</li>
+        <li>Use HTTPS encryption</li>
+    </ul>
+
+</div>
+
+<!-- QUIZ SECTION -->
+<div class="content-box">
+    <h2 class="section-title">📝 Module 4 Comprehensive Assessment</h2>
+
+    <div id="quiz"></div>
+    <button onclick="submitQuiz()">Submit Assessment</button>
+    <div id="result"></div>
+</div>
+
+<script>
+
+const questions = [
+{
+question: "Why is modular programming important?",
+options: ["It reduces readability", "It improves scalability", "It deletes data", "It slows performance"],
+correct: 1
+},
+{
+question: "What does localStorage allow?",
+options: ["Server storage", "Browser-based data persistence", "Database deletion", "HTML styling"],
+correct: 1
+},
+{
+question: "What is a common pass mark in LMS systems?",
+options: ["20%", "40%", "70%", "10%"],
+correct: 2
+},
+{
+question: "Professional systems separate:",
+options: ["Logic and Design", "Colors and Images", "Fonts and Buttons", "HTML and CSS"],
+correct: 0
+},
+{
+question: "Role-based systems define:",
+options: ["Page colors", "User permissions", "Font size", "Animations"],
+correct: 1
+},
+{
+question: "Which improves security?",
+options: ["Plain text password", "Backend validation", "No validation", "Disabling login"],
+correct: 1
+}
+];
+
+const quizContainer = document.getElementById("quiz");
+
+function renderQuiz(){
+    questions.forEach((q,index)=>{
+        const div=document.createElement("div");
+        div.innerHTML=`<p><strong>${index+1}. ${q.question}</strong></p>`;
+        q.options.forEach((opt,i)=>{
+            div.innerHTML+=`
+            <label>
+            <input type="radio" name="q${index}" value="${i}">
+            ${opt}
+            </label><br>`;
+        });
+        quizContainer.appendChild(div);
+    });
+}
+
+renderQuiz();
+
+function submitQuiz(){
+    let score=0;
+
+    questions.forEach((q,index)=>{
+        const selected=document.querySelector(`input[name="q${index}"]:checked`);
+        if(selected && parseInt(selected.value)===q.correct){
+            score++;
+        }
+    });
+
+    const percentage=(score/questions.length)*100;
+
+    if(percentage>=70){
+        localStorage.setItem("module4Passed", true);
+        document.getElementById("result").innerHTML=
+        `You scored ${percentage}%. ✅ PROFESSIONAL LEVEL PASSED.`;
+    } else{
+        document.getElementById("result").innerHTML=
+        `You scored ${percentage}%. ❌ Retake Required.`;
+    }
+}
+
+</script>
+
+</body>
+</html>
