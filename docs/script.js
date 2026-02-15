@@ -76,7 +76,7 @@ function nextQuestion() {
 }
 
 window.addEventListener("DOMContentLoaded", loadQuiz);
-<script>
+<style>
   <button onclick="openModule4()">
 
 
@@ -94,12 +94,13 @@ window.location.href="module4.html";
 };
 window.location.href="certificate.html";
 
-</script>
+</style>
 
-<script>
+<style>
 const user = localStorage.getItem("loggedInUser");
 
 if(!user){
     window.location.href = "index.html";
 }
-</script>
+</style>
+
