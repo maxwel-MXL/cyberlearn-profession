@@ -1,0 +1,15 @@
+{
+  "name": "CyberLearn",
+  "short_name": "CyberLearn",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0f2027",
+  "theme_color": "#4facfe",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
