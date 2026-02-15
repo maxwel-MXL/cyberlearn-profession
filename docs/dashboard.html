@@ -3,29 +3,42 @@
 <head>
     <title>Dashboard</title>
 </head>
-
 <body>
+<div class="container">
 
-<h1>CyberLearn Dashboard</h1>
+<h1>🌈 CyberLearn Dashboard</h1>
 
-<hr>
+<div class="card">
+    <h2>Module 1 - Foundations</h2>
+    <button class="btn1" onclick="openModule(1)">Open Module 1</button>
+</div>
 
-<h2>Module 1</h2>
-<button onclick="openModule(1)">Open Module 1</button>
+<div class="card">
+    <h2>Module 2 - Networking</h2>
+    <button class="btn2" onclick="openModule(2)">Open Module 2</button>
+</div>
 
-<h2>Module 2</h2>
-<button onclick="openModule(2)">Open Module 2</button>
+<div class="card">
+    <h2>Module 3 - Ethical Hacking</h2>
+    <button class="btn3" onclick="openModule(3)">Open Module 3</button>
+</div>
 
-<h2>Module 3</h2>
-<button onclick="openModule(3)">Open Module 3</button>
+<div class="card">
+    <h2>Module 4 - Professional Level</h2>
+    <button class="btn4" onclick="openModule(4)">Open Module 4</button>
+</div>
 
-<h2>Module 4</h2>
-<button onclick="openModule(4)">Open Module 4</button>
+<button class="logout" onclick="logout()">Logout</button>
 
-<br><br>
-<button onclick="logout()">Logout</button>
+<footer>
+    🚀 Built with CyberLearn System
+</footer>
 
+</div>
+
+<link rel="stylesheet" href="style.css">
 <script src="script.js"></script>
-
 </body>
+
+
 </html>
