@@ -1,93 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CyberLearn Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Dashboard</title>
 </head>
-<body style="margin:0; font-family:Arial; padding:40px;">
+
+<body>
 
 <h1>CyberLearn Dashboard</h1>
 
 <hr>
 
 <h2>Module 1</h2>
-<p>Cybersecurity Foundations</p>
-<button onclick="openModule1()">Start Module 1</button>
-
-<hr>
+<button onclick="openModule(1)">Open Module 1</button>
 
 <h2>Module 2</h2>
-<p>Networking Basics</p>
-<button onclick="openModule2()">Start Module 2</button>
-
-<hr>
+<button onclick="openModule(2)">Open Module 2</button>
 
 <h2>Module 3</h2>
-<p>Ethical Hacking</p>
-<button onclick="openModule3()">Start Module 3</button>
-
-<hr>
+<button onclick="openModule(3)">Open Module 3</button>
 
 <h2>Module 4</h2>
-<button onclick="openModule4()">Open Module 4</button>
+<button onclick="openModule(4)">Open Module 4</button>
 
-<script>
-
-const user = localStorage.getItem("loggedInUser");
-
-if(!user){
-    window.location.href = "index.html";
-}
-
-function openModule1(){
-    window.location.href = "module1.html";
-}
-
-function openModule2(){
-    window.location.href = "module2.html";
-}
-
-function openModule3(){
-    window.location.href = "module3.html";
-}
-
-function openModule4(){
-    window.location.href = "module4.html";
-}
-<div class="main">
-
-<h1>Welcome, <span id="user"></span></h1>
-
-<div class="card">
-    <h2>Your Progress</h2>
-    <div class="progress-bar">
-        <div class="progress-fill" id="progressFill"></div>
-    </div>
-</div>
-
-<div class="card">
-    <h2>Modules</h2>
-    <button onclick="window.location.href='module1.html'">Module 1</button>
-    <button onclick="window.location.href='module2.html'">Module 2</button>
-    <button onclick="window.location.href='module3.html'">Module 3</button>
-    <button onclick="window.location.href='module4.html'">Module 4</button>
-</div>
-
-<div class="card">
-    <h2>Certification</h2>
-    <button onclick="window.location.href='certificate.html'">View Certificate</button>
-</div>
-
+<br><br>
 <button onclick="logout()">Logout</button>
 
-</div>
-
-<script>
-document.getElementById("user").innerText = localStorage.getItem("loggedInUser");
-updateProgress();
-</script>
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
