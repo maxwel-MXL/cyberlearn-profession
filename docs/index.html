@@ -1,48 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login - DevLMS</title>
+    <title>Login</title>
 </head>
-<body style="font-family:Arial; text-align:center; margin-top:100px;">
 
-    <h1>DevLMS Login</h1>
+<body>
 
-    <input type="text" id="username" placeholder="Enter your name">
-    <br><br>
-    <button onclick="login()">Login</button>
+<h1>Login</h1>
 
-<script>
-
-function login(){
-
-    const username = document.getElementById("username").value;
-
-    if(username === ""){
-        alert("Please enter your name");
-        return;
-    }
-
-    localStorage.setItem("loggedInUser", username);
-
-    window.location.href = "dashboard.html";
-}
-
-</script>
-
-</body>
-</html>
 <input type="text" id="username" placeholder="Enter ID">
 <button onclick="login()">Login</button>
 
-<script>
-function login(){
-    const username = document.getElementById("username").value;
+<script src="script.js"></script>
 
-    if(username.trim() !== ""){
-        localStorage.setItem("loggedInUser", username);
-        window.location.href = "dashboard.html";
-    } else {
-        alert("Please enter your ID");
-    }
-}
-</script>
+</body>
+</html>
