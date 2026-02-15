@@ -46,6 +46,11 @@ h1 {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     transition: 0.3s ease;
 }
+.card {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
 
 .card:hover {
     transform: translateY(-5px);
