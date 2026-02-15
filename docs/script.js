@@ -119,3 +119,44 @@ function displayUsername() {
     const username = localStorage.getItem("loggedInUser");
     userElement.textContent = username ? username : "";
 }
+// ===== SIMPLE WORKING SYSTEM =====
+
+// Protect pages (except index)
+(function () {
+    const page = window.location.pathname.split("/").pop();
+
+    if (page !== "index.html" && page !== "") {
+        const user = localStorage.getItem("loggedInUser");
+        if (!user) {
+            window.location.href = "index.html";
+        }
+    }
+})();
+
+// ===== LOGIN =====
+function login() {
+    const input = document.getElementById("username");
+
+    if (!input) return;
+
+    const username = input.value.trim();
+
+    if (username === "") {
+        alert("Enter your ID");
+        return;
+    }
+
+    localStorage.setItem("loggedInUser", username);
+    window.location.href = "dashboard.html";
+}
+
+// ===== LOGOUT =====
+function logout() {
+    localStorage.removeItem("loggedInUser");
+    window.location.href = "index.html";
+}
+
+// ===== OPEN MODULE =====
+function openModule(num) {
+    window.location.href = "module" + num + ".html";
+}
