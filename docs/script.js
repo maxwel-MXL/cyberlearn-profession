@@ -1,106 +1,121 @@
-console.log("Script is connected");
-console.log("Login clicked");
+// ===============================
+// CYBERLEARN MAIN SCRIPT
+// ===============================
 
-// ===== LOGIN =====
+// Run after page loads
+document.addEventListener("DOMContentLoaded", function () {
+
+    protectPage();
+    updateProgressBar();
+    displayUsername();
+
+});
+
+
+// ===============================
+// LOGIN PROTECTION
+// ===============================
+
+function protectPage() {
+    const currentPage = window.location.pathname.split("/").pop();
+
+    // Allow access to login page
+    if (currentPage === "index.html" || currentPage === "") {
+        return;
+    }
+
+    const user = localStorage.getItem("loggedInUser");
+
+    if (!user) {
+        window.location.href = "index.html";
+    }
+}
+
+
+// ===============================
+// LOGIN FUNCTION
+// ===============================
+
 function login() {
-  let username = document.getElementById("username");
-  if (!username) return;
+    const username = document.getElementById("username").value.trim();
 
-  let value = username.value.trim();
-  if (value === "") {
-    alert("Enter username");
-    return;
-  }
+    if (username === "") {
+        alert("Please enter your ID");
+        return;
+    }
 
-  localStorage.setItem("user", value);
-  window.location.href = "dashboard.html";
+    localStorage.setItem("loggedInUser", username);
+    window.location.href = "dashboard.html";
 }
 
-// ===== MODULE 3 QUIZ =====
 
-let currentQuestion = 0;
-let score = 0;
+// ===============================
+// LOGOUT
+// ===============================
 
-const quizData = [
-  {
-    question: "What is the main goal of cybersecurity?",
-    answers: ["Entertainment", "Protect systems and data", "Speed up internet"],
-    correct: 1
-  },
-  {
-    question: "Phishing attacks target?",
-    answers: ["Hardware", "Human users", "Cables"],
-    correct: 1
-  },
-  {
-    question: "Ransomware does what?",
-    answers: ["Encrypts data", "Boosts speed", "Deletes browser"],
-    correct: 0
-  }
-];
-
-function loadQuiz() {
-  if (!document.getElementById("question")) return;
-  showQuestion();
-}
-
-function showQuestion() {
-  const questionEl = document.getElementById("question");
-  const answersEl = document.getElementById("answers");
-
-  questionEl.innerText = quizData[currentQuestion].question;
-  answersEl.innerHTML = "";
-
-  quizData[currentQuestion].answers.forEach((answer, index) => {
-    const button = document.createElement("button");
-    button.innerText = answer;
-    button.onclick = () => selectAnswer(index);
-    answersEl.appendChild(button);
-  });
-}
-
-function selectAnswer(index) {
-  if (index === quizData[currentQuestion].correct) {
-    score++;
-  }
-}
-
-function nextQuestion() {
-  currentQuestion++;
-  if (currentQuestion < quizData.length) {
-    showQuestion();
-  } else {
-    document.getElementById("quizResult").innerText =
-      "Final Score: " + score + "/" + quizData.length;
-  }
-}
-
-window.addEventListener("DOMContentLoaded", loadQuiz);
-<style>
-  <button onclick="openModule4()">
-
-
-const module4Passed = localStorage.getItem("module4Passed");
-
-const module5Btn = document.getElementById("module5Btn");
-
-if(!module4Passed){
-module5Btn.disabled = true;
-module5Btn.innerText = "Module 5 Locked";
-}
-
-document.getElementById("module4Btn").onclick = function(){
-window.location.href="module4.html";
-};
-window.location.href="certificate.html";
-
-</style>
-
-<style>
-const user = localStorage.getItem("loggedInUser");
-
-if(!user){
+function logout() {
+    localStorage.removeItem("loggedInUser");
     window.location.href = "index.html";
 }
-</style>
 
+
+// ===============================
+// MODULE NAVIGATION
+// ===============================
+
+function openModule(number) {
+    window.location.href = "module" + number + ".html";
+}
+
+
+// ===============================
+// MARK MODULE COMPLETE
+// ===============================
+
+function completeModule(number) {
+    localStorage.setItem("module" + number, "completed");
+    updateProgressBar();
+    alert("Module " + number + " marked as completed!");
+}
+
+
+// ===============================
+// PROGRESS SYSTEM
+// ===============================
+
+function updateProgressBar() {
+
+    const progressBar = document.getElementById("progressFill");
+
+    if (!progressBar) return;
+
+    let completed = 0;
+    const totalModules = 4;
+
+    for (let i = 1; i <= totalModules; i++) {
+        if (localStorage.getItem("module" + i) === "completed") {
+            completed++;
+        }
+    }
+
+    const percentage = (completed / totalModules) * 100;
+    progressBar.style.width = percentage + "%";
+
+    if (percentage === 100) {
+        localStorage.setItem("certificateUnlocked", "yes");
+    }
+}
+
+
+// ===============================
+// DISPLAY USERNAME
+// ===============================
+
+function displayUsername() {
+    const userElement = document.getElementById("userDisplay");
+
+    if (!userElement) return;
+
+    const username = localStorage.getItem("loggedInUser");
+    userElement.textContent = username ? username : "";
+}
