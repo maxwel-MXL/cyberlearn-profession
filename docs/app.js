@@ -1,6 +1,6 @@
 const user = localStorage.getItem("loggedInUser");
 
-if(!user && !window.location.href.includes("index.html")){
+
     window.location.href = "index.html";
 }
 
